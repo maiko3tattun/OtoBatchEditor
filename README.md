@@ -5,7 +5,7 @@
 行の追加や削除、エイリアスの置換、数値の四捨五入などができます。
 
 ## ダウンロード
-https://github.com/maiko3tattun/OtoBatchEditor/releases
+[https://github.com/maiko3tattun/OtoBatchEditor/releases](https://github.com/maiko3tattun/OtoBatchEditor/releases)  
 Assetsを開き、Windowsならだいたいwin-x64.zip、Windows Armならwin-arm64.zipをダウンロードしてください。
 
 ## 起動方法
