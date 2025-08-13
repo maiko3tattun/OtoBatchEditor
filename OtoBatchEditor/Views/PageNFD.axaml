@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:OtoBatchEditor.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="490" d:DesignHeight="690"
+             x:Class="OtoBatchEditor.Views.PageNFD"
+             x:DataType="vm:NFDViewModel"
+             xmlns:styles="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:dataGrid="clr-namespace:Material.Avalonia.DataGrid;assembly=Material.Avalonia.DataGrid">
+  <DockPanel>
+    <styles:ColorZone Classes="header">
+      <TextBlock Text="サイレント文字化け（濁点分離）を修正" Classes="header"/>
+    </styles:ColorZone>
+
+    <ScrollViewer>
+      <StackPanel Classes="content">
+
+        <TextBlock Margin="15" TextWrapping="Wrap" >
+          <Run Text="wavファイル名の見えない文字化け（NFD）を直します。" /><LineBreak/>
+          <Run Text="oto.iniに記載のファイル名と実際のファイル名が違う場合、両方をNFCに統一します。" /><LineBreak/>
+          <LineBreak/>
+          <Run Text="直せる文字化け：がぎぐげご　←実は「が」じゃない" /><LineBreak/>
+          <Run Text="直せない文字化け：縺ゅ＞縺・∴縺・" />
+        </TextBlock>
+        
+        <CheckBox Content="oto.iniにないwavもすべて処理する" IsChecked="{Binding MoveAll}" Margin="15"/>
+
+        <TextBlock Classes="Note"/>
+
+        <Button Command="{Binding OK}" Classes="Ok"/>
+      </StackPanel>
+    </ScrollViewer>
+  </DockPanel>
+</UserControl>

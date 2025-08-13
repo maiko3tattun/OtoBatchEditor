@@ -1,0 +1,27 @@
+﻿PresetType: ReplaceAlias
+ReplaceItems:
+- IsChecked: true
+  Before: あ ・
+  After: a ・
+- IsChecked: true
+  Before: い ・
+  After: i ・
+- IsChecked: true
+  Before: う ・
+  After: u ・
+- IsChecked: true
+  Before: え ・
+  After: e ・
+- IsChecked: true
+  Before: お ・
+  After: o ・
+- IsChecked: true
+  Before: ん ・
+  After: n ・
+- IsChecked: true
+  Before: ン ・
+  After: N ・
+IsRegex: false
+NoConvertSuffix: false
+TestText: あ ・_C4
+TestSuffix: _C4

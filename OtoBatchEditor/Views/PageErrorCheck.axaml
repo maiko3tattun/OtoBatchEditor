@@ -1,0 +1,37 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:OtoBatchEditor.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="490" d:DesignHeight="690"
+             x:Class="OtoBatchEditor.Views.PageErrorCheck"
+             x:DataType="vm:ErrorCheckViewModel"
+             xmlns:styles="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+  <DockPanel>
+    <styles:ColorZone Classes="header">
+      <TextBlock Text="エラーチェック" Classes="header"/>
+    </styles:ColorZone>
+
+    <ScrollViewer>
+      <StackPanel Classes="content">
+        <TextBlock Text="oto.iniとwavのエラーチェックを行います。" Margin="10"/>
+
+        <TextBlock Text="主なエラー：" Margin="10"/>
+        <StackPanel Margin="20,0">
+          <TextBlock Text="・ファイルの読み書きができない"/>
+          <TextBlock Text="・oto.iniの記述が不正"/>
+          <TextBlock Text="・パラメータの数値が不正、wavの長さを上回っている、伸縮範囲がない"/>
+          <TextBlock Text="・エイリアスが不正"/>
+          <TextBlock Text="・エイリアスの重複"/>
+          <TextBlock Text="・wavが見つからない、ファイル名が濁点分離（NFD）している"/>
+          <TextBlock Text="・wavファイル名がWindowsで使用できない"/>
+          <TextBlock Text="・oto.ini内にないwavがある"/>
+          <TextBlock Text="・wavのフォーマットがUTAUの仕様に準拠していない"/>
+        </StackPanel>
+
+        <Button Command="{Binding OK}" Classes="Ok"/>
+      </StackPanel>
+    </ScrollViewer>
+  </DockPanel>
+</UserControl>

@@ -1,0 +1,118 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:OtoBatchEditor"
+             xmlns:vm="using:OtoBatchEditor.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="490" d:DesignHeight="690"
+             x:Class="OtoBatchEditor.Views.PageAddVC"
+             x:DataType="vm:AddVCViewModel"
+             xmlns:styles="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:dataGrid="clr-namespace:Material.Avalonia.DataGrid;assembly=Material.Avalonia.DataGrid"
+             xmlns:assists="clr-namespace:Material.Styles.Assists;assembly=Material.Styles">
+  <UserControl.Styles>
+    <Style Selector="CheckBox.Header">
+      <Setter Property="FontSize" Value="15"/>
+      <Setter Property="FontWeight" Value="Bold"/>
+      <Setter Property="Margin" Value="5"/>
+    </Style>
+  </UserControl.Styles>
+  
+  <DockPanel>
+    <styles:ColorZone Classes="header">
+      <DockPanel Margin="0,0,60,0">
+        <TextBlock Text="連続音にVCを追加" Classes="header"/>
+        <local:PresetTip Name="preset"/>
+      </DockPanel>
+    </styles:ColorZone>
+
+    <ScrollViewer>
+      <StackPanel Classes="content">
+        <Grid ColumnDefinitions="*,*">
+          
+          <StackPanel Grid.Column="0">
+            <CheckBox Content="無声破裂音 (優先度：高)" IsChecked="{Binding Check1}" Classes="Header accent"/>
+            <ItemsControl ItemsSource="{Binding Consonant1}" Margin="15,5,0,10">
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <CheckBox Content="{Binding Label}" IsChecked="{Binding IsChecked}" />
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <CheckBox Content="有声破裂音 (優先度：中)" IsChecked="{Binding Check2}" Classes="Header accent"/>
+            <ItemsControl ItemsSource="{Binding Consonant2}" Margin="15,5,0,10">
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <CheckBox Content="{Binding Label}" IsChecked="{Binding IsChecked}" />
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </StackPanel>
+
+          <StackPanel Grid.Column="1">
+            <CheckBox Content="その他の子音 (優先度：低)" IsChecked="{Binding Check3}" Classes="Header accent"/>
+            <ItemsControl ItemsSource="{Binding Consonant3}" Margin="15,5,0,10">
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <CheckBox Content="{Binding Label}" IsChecked="{Binding IsChecked}" />
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </StackPanel>
+        </Grid>
+
+        <Expander assists:ShadowAssist.ShadowDepth="CenterDepth1" Margin="0,10">
+          <Expander.Header>
+            <CheckBox Content="拗音・ハ行 (優先度：激低)" IsChecked="{Binding Check4}" Classes="Header accent" Margin="0"/>
+          </Expander.Header>
+          <ItemsControl ItemsSource="{Binding Consonant4}" Margin="15">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <CheckBox Content="{Binding Label}" IsChecked="{Binding IsChecked}" />
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </Expander>
+
+        <Expander assists:ShadowAssist.ShadowDepth="CenterDepth1" Margin="0,10">
+          <Expander.Header>
+            <CheckBox Content="カスタム" IsChecked="{Binding Check5}" Classes="Header accent" Margin="0"/>
+          </Expander.Header>
+
+          <StackPanel Margin="15" Classes="grid">
+            <Grid ColumnDefinitions="30,*,*,*,50,40,35" Margin="0,0,0,10">
+              <TextBlock Text="子音" Grid.Column="1"/>
+              <TextBlock Text="検索する文字" Grid.Column="2"/>
+              <TextBlock Text="子音長" Grid.Column="3"/>
+              <TextBlock Text="破裂音" Grid.Column="4"/>
+              <TextBlock Text="削除" Grid.Column="5"/>
+              <styles:FloatingButton Command="{Binding AddRow}" Classes="Light plus" Grid.Column="6"/>
+            </Grid>
+
+            <ItemsControl ItemsSource="{Binding Consonant5}">
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <Grid ColumnDefinitions="30,*,*,*,50,40,35" Margin="2">
+                    <CheckBox IsChecked="{Binding IsChecked}" Grid.Column="0" HorizontalAlignment="Center"/>
+                    <TextBox Text="{Binding Consonant}" Grid.Column="1"/>
+                    <TextBox Text="{Binding Kana}" Grid.Column="2"/>
+                    <TextBox Text="{Binding Length}" Grid.Column="3"/>
+                    <CheckBox IsChecked="{Binding IsPlosive}" Grid.Column="4" HorizontalAlignment="Center"/>
+                    <styles:FloatingButton Command="{Binding Parent.DeleteRow}" Classes="minus" Grid.Column="5" CommandParameter="{Binding}"/>
+                  </Grid>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </StackPanel>
+        </Expander>
+        
+        <TextBlock Classes="Note"/>
+        <CheckBox Classes="Overwrite accent" IsChecked="{Binding Overwrite}" />
+
+        <Button Command="{Binding OK}" Classes="Ok"/>
+      </StackPanel>
+    </ScrollViewer>
+  </DockPanel>
+</UserControl>

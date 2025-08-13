@@ -1,0 +1,39 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:OtoBatchEditor"
+             xmlns:vm="using:OtoBatchEditor.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="490" d:DesignHeight="690"
+             x:Class="OtoBatchEditor.Views.PageParamShift"
+             x:DataType="vm:ParamShiftViewModel"
+             xmlns:styles="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+  <DockPanel>
+    <styles:ColorZone Classes="header">
+      <DockPanel Margin="0,0,60,0">
+        <TextBlock Text="パラメータをまとめて横にずらす" Classes="header"/>
+        <local:PresetTip Name="preset"/>
+      </DockPanel>
+    </styles:ColorZone>
+
+    <ScrollViewer>
+      <StackPanel Classes="content">
+        <TextBlock Margin="10">
+          <Run Text="全エイリアスの位置を同じだけずらします。" /><LineBreak/>
+          <Run Text="発声開始位置がひな形のoto.iniとずれている場合の補正用です。" /><LineBreak/>
+          <Run Text="プラスで右に、マイナスで左にずらします。" />
+        </TextBlock>
+
+        <StackPanel Orientation="Horizontal" Margin="0,20" HorizontalAlignment="Center" >
+          <TextBox Text="{Binding Shift, UpdateSourceTrigger=LostFocus}" Width="100"/>
+          <TextBlock Text="ms" VerticalAlignment="Center" />
+        </StackPanel>
+        
+        <TextBlock Classes="Note"/>
+
+        <Button Command="{Binding OK}" Classes="Ok"/>
+      </StackPanel>
+    </ScrollViewer>
+  </DockPanel>
+</UserControl>

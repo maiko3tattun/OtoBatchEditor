@@ -1,0 +1,51 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:OtoBatchEditor"
+             xmlns:vm="using:OtoBatchEditor.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="490" d:DesignHeight="690"
+             x:Class="OtoBatchEditor.Views.PageUst"
+             x:DataType="vm:UstViewModel"
+             xmlns:styles="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+  <DockPanel>
+    <styles:ColorZone Classes="header">
+      <DockPanel Margin="0,0,60,0">
+        <TextBlock Text="原音設定チェック用ustを作成" Classes="header"/>
+        <local:PresetTip Name="preset"/>
+      </DockPanel>
+    </styles:ColorZone>
+
+    <ScrollViewer>
+      <StackPanel Classes="content">
+        <local:SubTitle Icon="CheckBold" Text="ustの形式"/>
+        <Grid RowDefinitions="*,*" ColumnDefinitions="Auto,*" HorizontalAlignment="Left" Margin="30,0,30,20">
+          <RadioButton Content="エイリアスから作成" IsChecked="{Binding LyricFromAlias}" Grid.Row="0" Grid.Column="0"/>
+          <RadioButton Content="wavファイル名から単独音ustを作成" IsChecked="{Binding !LyricFromAlias}" Grid.Row="1" Grid.Column="0"/>
+          <materialIcons:MaterialIcon Kind="TooltipQuestion" Width="20" Height="20" Cursor="Hand" Grid.Row="1" Grid.Column="1" Margin="8,0"
+                       ToolTip.Tip="{Binding HintText, Mode=OneWay}" ToolTip.Placement="Bottom"/>
+        </Grid>
+
+        <local:SubTitle Icon="CheckBold" Text="保存場所の指定"/>
+        <StackPanel Margin="20,0,20,10">
+          <styles:Card Margin="10" Height="80" Background="{DynamicResource MaterialPrimaryLightBrush}"
+                               DragDrop.AllowDrop="True" DragDrop.Drop="OnDrop">
+            <TextBlock FontSize="16" FontWeight="SemiBold" TextAlignment="Center" VerticalAlignment="Center"
+                       Text="フォルダをドラッグ＆ドロップ"/>
+          </styles:Card>
+          <TextBlock Margin="10" Text="{Binding DisplayPath}"/>
+        </StackPanel>
+
+        <local:SubTitle Icon="CheckBold" Text="ustのテンポ"/>
+        <StackPanel Orientation="Horizontal" Margin="30,0,30,20">
+          <TextBlock Text="BPM" VerticalAlignment="Center" />
+          <TextBox Text="{Binding Tempo, UpdateSourceTrigger=LostFocus}" Width="80"/>
+        </StackPanel>
+
+        <TextBlock Classes="Note"/>
+        <Button Command="{Binding OK}" Classes="Ok" IsEnabled="{Binding CanExe}"/>
+      </StackPanel>
+    </ScrollViewer>
+  </DockPanel>
+</UserControl>

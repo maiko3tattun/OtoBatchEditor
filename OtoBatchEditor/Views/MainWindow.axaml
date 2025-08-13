@@ -1,0 +1,71 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:OtoBatchEditor.ViewModels"
+        mc:Ignorable="d" Width="900" Height="700"
+        x:Class="OtoBatchEditor.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        xmlns:views="clr-namespace:OtoBatchEditor.Views"
+        xmlns:styles="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+        xmlns:dialogHost="clr-namespace:DialogHostAvalonia;assembly=DialogHost.Avalonia"
+        xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="oto.iniまとめて改造ましーん"
+        Closing="WhenClosing" KeyDown="MainWindowsKeyDown">
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+  <Grid ColumnDefinitions="Auto,*">
+    <!-- 左 -->
+    <views:OtoListPanel Grid.Column="0" VerticalAlignment="Stretch"/>
+
+    <!-- 右 -->
+    <styles:Card Grid.Column="1" Margin="5" Padding="0">
+      <styles:SnackbarHost HostName="MainWindowSnackbar">
+        <styles:NavigationDrawer RightDrawerOpened="{Binding IsRightDrawerOpen, Mode=TwoWay}" RightDrawerWidth="220">
+          <styles:NavigationDrawer.RightDrawerContent>
+            <StackPanel VerticalAlignment="Stretch">
+              <Button HorizontalAlignment="Right" Command="{Binding ToggleDrawer}"
+                      Theme="{StaticResource MaterialFlatButton}" Width="54" Height="54" Margin="10,0" CornerRadius="26">
+                <materialIcons:MaterialIcon Kind="Close" Width="30" Height="30" Margin="10,5"/>
+              </Button>
+              <ListBox ItemsSource="{Binding RightPages}" SelectedIndex="{Binding DrawerSelectedIndex}" />
+            </StackPanel>
+          </styles:NavigationDrawer.RightDrawerContent>
+
+          <Panel VerticalAlignment="Stretch" Focusable="True">
+            <Carousel SelectedIndex="{Binding PageIndex}">
+              <views:PageMain/>
+              <views:PageBackup/>
+              <views:PageRound/>
+              <views:PageParamShift/>
+              <views:PageAddOtos/>
+              <views:PageAddVC/>
+              <views:PageAddPreC/>
+              <views:PageRemoveOtos/>
+              <views:PageDuplicate/>
+              <views:PageTrim/>
+              <views:PageReplaceAlias/>
+              <views:PageAddSuffixAlias/>
+              <views:PageUnderScore/>
+              <views:PageNFD/>
+              <views:PageErrorCheck/>
+              <views:PageUst/>
+            </Carousel>
+            <Button Command="{Binding ToggleDrawer}" HorizontalAlignment="Right" VerticalAlignment="Top"
+                    Theme="{StaticResource MaterialFlatButton}" Classes="NoHover" Height="54">
+              <materialIcons:MaterialIcon Kind="Menu" Width="40" Height="40"/>
+            </Button>
+          </Panel>
+        </styles:NavigationDrawer>
+      </styles:SnackbarHost>
+    </styles:Card>
+
+    <styles:Card Name="ProgressIcon" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" IsVisible="False">
+      <ProgressBar Classes="circular" IsIndeterminate="True"/>
+    </styles:Card>
+    <dialogHost:DialogHost IsOpen="{Binding IsDialogOpen}" Identifier="dialog" Grid.ColumnSpan="2"/>
+  </Grid>
+</Window>

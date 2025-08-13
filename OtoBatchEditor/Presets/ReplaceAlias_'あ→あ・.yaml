@@ -1,0 +1,9 @@
+﻿PresetType: ReplaceAlias
+ReplaceItems:
+- IsChecked: true
+  Before: "'([あいうえおんン])"
+  After: $1・
+IsRegex: true
+NoConvertSuffix: true
+TestText: "'あ_C4"
+TestSuffix: _C4

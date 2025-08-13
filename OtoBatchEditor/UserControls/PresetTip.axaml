@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:OtoBatchEditor"
+             xmlns:vm="using:OtoBatchEditor"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="OtoBatchEditor.PresetTip"
+             x:DataType="vm:PresetTipViewModel"
+             xmlns:styles="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+             xmlns:assists="clr-namespace:Material.Styles.Assists;assembly=Material.Styles"
+             Background="Transparent" ClipToBounds="False">
+  <DropDownButton Content="プリセット" Name="button"
+                  assists:ShadowAssist.ShadowDepth="0" Classes="light" VerticalAlignment="Center" HorizontalAlignment="Right">
+    <DropDownButton.Flyout>
+      <Flyout>
+        <ItemsControl ItemsSource="{Binding PresetList}" Background="Transparent">
+          <ItemsControl.DataTemplates>
+            <DataTemplate DataType="vm:PresetItemViewModel">
+              <Button Content="{Binding DisplayName}" Command="{Binding Command}"
+                      Classes="flat" FontWeight="Normal" HorizontalContentAlignment="Left" MinWidth="150"/>
+            </DataTemplate>
+
+            <DataTemplate DataType="Separator">
+              <Separator Margin="0,2"/>
+            </DataTemplate>
+          </ItemsControl.DataTemplates>
+        </ItemsControl>
+      </Flyout>
+    </DropDownButton.Flyout>
+  </DropDownButton>
+</UserControl>

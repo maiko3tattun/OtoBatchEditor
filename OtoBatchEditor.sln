@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtoBatchEditor", "OtoBatchEditor\OtoBatchEditor.csproj", "{46759A1E-FB76-47D0-95BA-57FACC5DCB26}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46759A1E-FB76-47D0-95BA-57FACC5DCB26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46759A1E-FB76-47D0-95BA-57FACC5DCB26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46759A1E-FB76-47D0-95BA-57FACC5DCB26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46759A1E-FB76-47D0-95BA-57FACC5DCB26}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD73FC43-05FC-4340-8B82-B2F4E3A469CC}
+	EndGlobalSection
+EndGlobal

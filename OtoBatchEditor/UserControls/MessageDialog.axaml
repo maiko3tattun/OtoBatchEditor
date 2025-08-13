@@ -1,0 +1,23 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="OtoBatchEditor.MessageDialog"
+             xmlns:dialogHostAvalonia="clr-namespace:DialogHostAvalonia;assembly=DialogHost.Avalonia">
+  <StackPanel Margin="20,10">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="500" >
+      <TextBlock x:Name="textBlock" Margin="10" />
+    </ScrollViewer>
+
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,20,10,0" Spacing="20">
+      <Button Content="OK" Name="okButton" MinWidth="100" HorizontalAlignment="Center"
+              Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=dialogHostAvalonia:DialogHost}, Path=CloseDialogCommand}"
+              Click="OK" />
+
+      <Button Content="Cancel" Name="cancelButton" MinWidth="100" HorizontalAlignment="Center" IsVisible="False"
+              Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=dialogHostAvalonia:DialogHost}, Path=CloseDialogCommand}"
+              Click="Cancel" />
+    </StackPanel>
+  </StackPanel>
+</UserControl>

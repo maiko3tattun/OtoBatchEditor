@@ -1,0 +1,8 @@
+﻿PresetType: ReplaceAlias
+ReplaceItems:
+- IsChecked: true
+  Before: ([0-9]|[0-9][0-9])[Suffix]
+  After: '[Suffix]'
+IsRegex: true
+TestText: あ2_C4
+TestSuffix: _C4

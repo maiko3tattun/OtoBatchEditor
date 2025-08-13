@@ -1,0 +1,20 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:OtoBatchEditor.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="490" d:DesignHeight="690"
+             x:Class="OtoBatchEditor.Views.PageMain"
+             x:DataType="vm:MainWindowViewModel"
+             xmlns:views="clr-namespace:OtoBatchEditor.Views"
+             xmlns:styles="clr-namespace:Material.Styles.Controls;assembly=Material.Styles">
+  <DockPanel>
+    <styles:ColorZone Classes="header">
+      <TextBlock Text="メニューを選択" Classes="header"/>
+    </styles:ColorZone>
+
+    <StackPanel Classes="content">
+      <ListBox ItemsSource="{Binding RightPages}" SelectedIndex="{Binding DrawerSelectedIndex}"/>
+    </StackPanel>
+  </DockPanel>
+</UserControl>

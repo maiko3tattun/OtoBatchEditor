@@ -1,0 +1,40 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:OtoBatchEditor"
+             xmlns:vm="using:OtoBatchEditor.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="490" d:DesignHeight="690"
+             x:Class="OtoBatchEditor.Views.PageBackup"
+             x:DataType="vm:BackupViewModel"
+             xmlns:styles="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+  <DockPanel>
+    <styles:ColorZone Classes="header">
+      <DockPanel Margin="0,0,60,0">
+        <TextBlock Text="バックアップを作成" Classes="header"/>
+        <local:PresetTip Name="preset"/>
+      </DockPanel>
+    </styles:ColorZone>
+    
+    <ScrollViewer>
+      <StackPanel Classes="content">
+        <TextBlock Margin="10">
+          <Run Text="oto.iniを同じ場所に複製します。" /><LineBreak/>
+          <Run Text="oto_backup.iniはこのソフトがガンガン上書きしていくので、" /><LineBreak/>
+          <Run Text="長期的に保存したい場合は他の名前を選んでください。" />
+        </TextBlock>
+
+        <TextBlock Text="名前：" Margin="10"/>
+        <ListBox Margin="30,0,30,10" SelectedIndex="{Binding NameIndex}" Classes="RadioButtonListBox">
+          <ListBoxItem Content="oto_original.ini" />
+          <ListBoxItem Content="oto_backup.ini" />
+          <ListBoxItem Content="oto_＜日付と時間＞.ini" />
+        </ListBox>
+        <CheckBox Content="すでにある場合上書きする" IsChecked="{Binding OverWrite}" Margin="10" Classes="accent"/>
+
+        <Button Command="{Binding OK}" Classes="Ok"/>
+      </StackPanel>
+    </ScrollViewer>
+  </DockPanel>
+</UserControl>

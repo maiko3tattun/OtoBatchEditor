@@ -1,0 +1,54 @@
+﻿PresetType: ReplaceAlias
+ReplaceItems:
+- IsChecked: true
+  Before: j
+  After: y
+- IsChecked: true
+  Before: k'
+  After: ky
+- IsChecked: true
+  Before: g'
+  After: gy
+- IsChecked: true
+  Before: S
+  After: sh
+- IsChecked: true
+  Before: Z
+  After: j
+- IsChecked: true
+  Before: t'
+  After: ty
+- IsChecked: true
+  Before: d'
+  After: dy
+- IsChecked: true
+  Before: tS
+  After: ch
+- IsChecked: true
+  Before: J
+  After: ny
+- IsChecked: true
+  Before: " p\\"
+  After: f
+- IsChecked: true
+  Before: C
+  After: hy
+- IsChecked: true
+  Before: b'
+  After: by
+- IsChecked: true
+  Before: p'
+  After: py
+- IsChecked: true
+  Before: m'
+  After: my
+- IsChecked: true
+  Before: 4'
+  After: ry
+- IsChecked: true
+  Before: "4"
+  After: r
+IsRegex: false
+NoConvertSuffix: true
+TestText: a C_C4
+TestSuffix: _C4

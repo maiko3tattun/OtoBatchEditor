@@ -1,0 +1,74 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:OtoBatchEditor"
+             xmlns:vm="using:OtoBatchEditor.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="490" d:DesignHeight="690"
+             x:Class="OtoBatchEditor.Views.PageAddOtos"
+             x:DataType="vm:AddOtosViewModel"
+             xmlns:styles="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:dataGrid="clr-namespace:Material.Avalonia.DataGrid;assembly=Material.Avalonia.DataGrid">
+  <DockPanel>
+    <styles:ColorZone Classes="header">
+      <DockPanel Margin="0,0,60,0">
+        <TextBlock Text="行を追加（語尾・母音結合・を）" Classes="header"/>
+        <local:PresetTip Name="preset"/>
+      </DockPanel>
+    </styles:ColorZone>
+
+    <ScrollViewer>
+      <StackPanel Classes="content">
+        <StackPanel Orientation="Horizontal" Margin="15">
+          <CheckBox Content="語尾 ※" IsChecked="{Binding AddEnding}" HorizontalAlignment="Left" />
+          <TextBlock Text="　　a " VerticalAlignment="Center"/>
+          <TextBox Text="{Binding EndingAlias}" Width="50" TextAlignment="Left"/>
+        </StackPanel>
+        <TextBlock TextWrapping="Wrap" Margin="30,0,30,15">
+          <Run Text="※語尾は、「_ああいあうえあ" />
+          <Run Text="↑" Foreground="Red" />
+          <Run Text=".wav」のように、ファイル名の後ろに音階や表情が書かれていると正しく動作しません。" />
+        </TextBlock>
+
+        <CheckBox Content="母音結合（* あ）" IsChecked="{Binding AddVowel}" HorizontalAlignment="Left" Margin="15" />
+
+        <CheckBox Content="単独音を複製して[- ○]を作る" IsChecked="{Binding AddRentan}" HorizontalAlignment="Left" Margin="15"/>
+        <TextBlock TextWrapping="Wrap" Margin="30,0,30,15">
+          <Run Text="※半角スペースの入っていないエイリアスを単独音判定します" />
+        </TextBlock>
+
+        <CheckBox Content="複製する（部分一致）" IsChecked="{Binding AddDupli}" Margin="15" />
+        <styles:Card Margin="20,0,20,15">
+          <StackPanel Margin="5" Classes="grid">
+            <Grid ColumnDefinitions="30,*,*,40,35" Margin="0,0,0,10">
+              <TextBlock Text="検索する文字" Grid.Column="1"/>
+              <TextBlock Text="追加する文字" Grid.Column="2"/>
+              <TextBlock Text="削除" Grid.Column="3"/>
+              <styles:FloatingButton Command="{Binding AddRow}" Classes="Light plus" Grid.Column="4"/>
+            </Grid>
+
+            <ItemsControl ItemsSource="{Binding DupliItems}">
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <Grid ColumnDefinitions="30,*,*,40,35" Margin="2">
+                    <CheckBox IsChecked="{Binding IsChecked}" Grid.Column="0" HorizontalAlignment="Center"/>
+                    <TextBox Text="{Binding Search}" Grid.Column="1"/>
+                    <TextBox Text="{Binding Alias}" Grid.Column="2"/>
+                    <styles:FloatingButton Command="{Binding Parent.DeleteRow}" Classes="minus" Grid.Column="3" CommandParameter="{Binding}"/>
+                  </Grid>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </StackPanel>
+        </styles:Card>
+        
+
+        <TextBlock Classes="Note"/>
+        <CheckBox Classes="Overwrite accent" IsChecked="{Binding Overwrite}" />
+
+        <Button Command="{Binding OK}" Classes="Ok"/>
+      </StackPanel>
+    </ScrollViewer>
+  </DockPanel>
+</UserControl>

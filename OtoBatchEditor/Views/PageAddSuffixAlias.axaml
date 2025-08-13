@@ -1,0 +1,50 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:OtoBatchEditor"
+             xmlns:vm="using:OtoBatchEditor.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="490" d:DesignHeight="690"
+             x:Class="OtoBatchEditor.Views.PageAddSuffixAlias"
+             x:DataType="vm:AddSuffixAliasViewModel"
+             xmlns:styles="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:dataGrid="clr-namespace:Material.Avalonia.DataGrid;assembly=Material.Avalonia.DataGrid">
+  <DockPanel>
+    <styles:ColorZone Classes="header">
+      <DockPanel Margin="0,0,60,0">
+        <TextBlock Text="エイリアス末尾に音階名などを追加" Classes="header"/>
+        <local:PresetTip Name="preset"/>
+      </DockPanel>
+    </styles:ColorZone>
+
+    <ScrollViewer>
+      <StackPanel Classes="content">
+        <TextBlock Margin="15" TextWrapping="Wrap" >
+          <Run Text="エイリアスの後ろにSuffix（表情名や音階名）をつけます。" /><LineBreak/>
+          <Run Text="例）[- あ]→[- あ強_C4]" /><LineBreak/>
+          <LineBreak/>
+          <Run Text="※[C4]→[強C4] のように末尾でない場所に付けたい場合は「エイリアスを変換」を使用してください" />
+        </TextBlock>
+
+        <StackPanel Margin="15">
+          <RadioButton Content="全oto.iniに同じSuffixをつける（表情など）" IsChecked="{Binding IsAll}"/>
+          <RadioButton Content="各oto.iniに違うSuffixをつける（音階など）" IsChecked="{Binding !IsAll}"/>
+        </StackPanel>
+        
+        <CheckBox Content="すでに末尾に指定したSuffixがついているエイリアスはスキップ" IsChecked="{Binding SkipEndWith}" Margin="15,5"/>
+
+        <styles:Card Margin="15">
+          <StackPanel Margin="10,0" Orientation="Horizontal">
+            <TextBlock Text="全oto.ini共通のSuffix：" VerticalAlignment="Center" />
+            <TextBox Text="{Binding Append}" MinWidth="100"/>
+          </StackPanel>
+        </styles:Card>
+
+        <TextBlock Classes="Note"/>
+
+        <Button Command="{Binding OK}" Classes="Ok"/>
+      </StackPanel>
+    </ScrollViewer>
+  </DockPanel>
+</UserControl>

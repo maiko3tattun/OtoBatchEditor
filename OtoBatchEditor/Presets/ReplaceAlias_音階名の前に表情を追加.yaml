@@ -1,0 +1,8 @@
+﻿PresetType: ReplaceAlias
+ReplaceItems:
+- IsChecked: true
+  Before: '[Suffix]'
+  After: 強[Suffix]
+IsRegex: false
+TestText: あ_C4
+TestSuffix: _C4

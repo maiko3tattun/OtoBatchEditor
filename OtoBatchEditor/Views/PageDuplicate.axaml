@@ -1,0 +1,69 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:OtoBatchEditor"
+             xmlns:vm="using:OtoBatchEditor.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="490" d:DesignHeight="690"
+             x:Class="OtoBatchEditor.Views.PageDuplicate"
+             x:DataType="vm:DuplicateViewModel"
+             xmlns:styles="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+  <DockPanel>
+    <styles:ColorZone Classes="header">
+      <DockPanel Margin="0,0,60,0">
+        <TextBlock Text="重複エイリアスの確認と削除" Classes="header"/>
+        <local:PresetTip Name="preset"/>
+      </DockPanel>
+    </styles:ColorZone>
+
+    <ScrollViewer>
+      <StackPanel Classes="content">
+        <TextBlock Margin="10">
+          <Run Text="エイリアス名が完全一致したものを検索・削除します。" /><LineBreak/>
+          <Run Text="なるべく拗音を使用せず、純粋な母音の行から抜き出すようになっています。" /><LineBreak/>
+          <LineBreak/>
+          <Run Text="[ん2]のように既に数字が付いている場合は、先に「エイリアス変換」モードで消してから「重複エイリアスを選択して削除」するのがおすすめです。" />
+        </TextBlock>
+
+        <local:SubTitle Icon="Settings" Text="設定"/>
+        <StackPanel Margin="25,0,25,20">
+          <RadioButton Content="oto.iniごとに検索" IsChecked="{Binding Each}"/>
+          <RadioButton Content="読み込んだすべてのoto.iniを合わせて検索" IsChecked="{Binding !Each}"/>
+
+          <StackPanel Orientation="Horizontal" Margin="0,10" >
+            <TextBlock Text="消すときに残す個数：" VerticalAlignment="Center" />
+            <TextBox Text="{Binding LeaveCount}" Width="50" TextAlignment="Center" />
+          </StackPanel>
+          
+          <CheckBox Content="2個以上残すときに番号を振る" IsChecked="{Binding AddNum}" Margin=""/>
+        </StackPanel>
+
+        <local:SubTitle Icon="Magnify" Text="検索"/>
+        <StackPanel Margin="25,0,25,20">
+          <Button Content="重複エイリアスを検索して表示" Command="{Binding Search}" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <local:SubTitle Icon="Delete" Text="削除"/>
+        <TextBlock Classes="Note" Margin="25,0,25,30"/>
+        
+        <StackPanel Margin="25,0,25,20">
+          <Button Content="重複エイリアスを選択して削除" Command="{Binding Remove}" HorizontalAlignment="Left" />
+          <TextBlock Margin="5,10" >
+            <Run Text="エイリアスが重複した行（完全一致）を、どれを残すか選んで削除します。" /><LineBreak/>
+            <Run Text="エイリアスの優先順位を自動判別して、残すべきものはデフォルトで選択されます。" />
+          </TextBlock>
+        </StackPanel>
+        
+        <StackPanel Margin="25,0,25,20">
+          <Button Content="数字付きのエイリアスを削除" Command="{Binding RemoveNum}" HorizontalAlignment="Left" />
+          <TextBlock Margin="5,10" >
+            <Run Text="[あ2][あ3]のような数字が付いているエイリアスを削除します。" />
+            <LineBreak/>
+            <Run Text="（C4などの音階名の数字はできる限り無視します）" />
+          </TextBlock>
+        </StackPanel>
+      </StackPanel>
+    </ScrollViewer>
+  </DockPanel>
+</UserControl>

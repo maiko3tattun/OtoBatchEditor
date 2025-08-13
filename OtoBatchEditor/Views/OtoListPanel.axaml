@@ -1,0 +1,46 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:OtoBatchEditor.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="700"
+             x:Class="OtoBatchEditor.Views.OtoListPanel"
+             x:DataType="vm:OtoListViewModel"
+             xmlns:styles="clr-namespace:Material.Styles.Controls;assembly=Material.Styles">
+  <styles:Card Margin="5" Width="390">
+    <Grid RowDefinitions="Auto,*">
+      <StackPanel Grid.Row="0">
+        <TextBlock Text="＜oto.iniの読み込み＞" FontSize="17" Margin="20,10,20,0" HorizontalAlignment="Center" />
+        
+        <styles:Card Padding="20" Margin="20" Background="{DynamicResource MaterialPrimaryLightBrush}"
+                     DragDrop.AllowDrop="True" DragDrop.Drop="OnDropInis">
+          <TextBlock FontSize="16" FontWeight="SemiBold" TextAlignment="Center">
+            <Run Text="oto.ini または フォルダを" /><LineBreak/>
+            <Run Text="ドロップして追加（複数可）" />
+          </TextBlock>
+        </styles:Card>
+
+        <TextBlock Margin="20,0">
+          <Run Text="※フォルダをドロップすると配下のoto.iniがすべて追加されます" /><LineBreak/>
+          <Run Text="※空のoto.iniは自動的にはじきます" />
+        </TextBlock>
+
+        <Button Content="リストをリセット" Margin="20" Command="{Binding ResetOtoList}"/>
+        <Button Content="選択したoto.iniをリストから削除" Margin="20,0" Command="{Binding RemoveOto}" />
+
+        <TextBlock Margin="20,20,20,0">
+          <Run Text="処理するoto.iniリスト：" />
+        </TextBlock>
+      </StackPanel>
+
+      <ListBox ItemsSource="{Binding OtoiniList}" Selection="{Binding SelectedItems}" SelectionMode="Multiple,Toggle"
+               Margin="20" Grid.Row="1" FontSize="12" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+        <ListBox.Styles>
+          <Style Selector="ListBoxItem">
+            <Setter Property="Padding" Value="6"/>
+          </Style>
+        </ListBox.Styles>
+      </ListBox>
+    </Grid>
+  </styles:Card>
+</UserControl>

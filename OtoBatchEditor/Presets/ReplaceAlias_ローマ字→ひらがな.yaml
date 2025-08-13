@@ -1,0 +1,423 @@
+﻿PresetType: ReplaceAlias
+ReplaceItems:
+- IsChecked: true
+  Before: kya(?! )
+  After: きゃ
+- IsChecked: true
+  Before: kyu(?! )
+  After: きゅ
+- IsChecked: true
+  Before: kye(?! )
+  After: きぇ
+- IsChecked: true
+  Before: kyo(?! )
+  After: きょ
+- IsChecked: true
+  Before: gya(?! )
+  After: ぎゃ
+- IsChecked: true
+  Before: gyu(?! )
+  After: ぎゅ
+- IsChecked: true
+  Before: gye(?! )
+  After: ぎぇ
+- IsChecked: true
+  Before: gyo(?! )
+  After: ぎょ
+- IsChecked: true
+  Before: sha(?! )
+  After: しゃ
+- IsChecked: true
+  Before: shi(?! )
+  After: し
+- IsChecked: true
+  Before: shu(?! )
+  After: しゅ
+- IsChecked: true
+  Before: she(?! )
+  After: しぇ
+- IsChecked: true
+  Before: sho(?! )
+  After: しょ
+- IsChecked: true
+  Before: ja(?! )
+  After: じゃ
+- IsChecked: true
+  Before: ji(?! )
+  After: じ
+- IsChecked: true
+  Before: ju(?! )
+  After: じゅ
+- IsChecked: true
+  Before: je(?! )
+  After: じぇ
+- IsChecked: true
+  Before: jo(?! )
+  After: じょ
+- IsChecked: true
+  Before: cha(?! )
+  After: ちゃ
+- IsChecked: true
+  Before: chi(?! )
+  After: ち
+- IsChecked: true
+  Before: chu(?! )
+  After: ちゅ
+- IsChecked: true
+  Before: che(?! )
+  After: ちぇ
+- IsChecked: true
+  Before: cho(?! )
+  After: ちょ
+- IsChecked: true
+  Before: tsa(?! )
+  After: つぁ
+- IsChecked: true
+  Before: tsi(?! )
+  After: つぃ
+- IsChecked: true
+  Before: tsu(?! )
+  After: つ
+- IsChecked: true
+  Before: tse(?! )
+  After: つぇ
+- IsChecked: true
+  Before: tso(?! )
+  After: つぉ
+- IsChecked: true
+  Before: nya(?! )
+  After: にゃ
+- IsChecked: true
+  Before: nyu(?! )
+  After: にゅ
+- IsChecked: true
+  Before: nye(?! )
+  After: にぇ
+- IsChecked: true
+  Before: nyo(?! )
+  After: にょ
+- IsChecked: true
+  Before: hya(?! )
+  After: ひゃ
+- IsChecked: true
+  Before: hyu(?! )
+  After: ひゅ
+- IsChecked: true
+  Before: hye(?! )
+  After: ひぇ
+- IsChecked: true
+  Before: hyo(?! )
+  After: ひょ
+- IsChecked: true
+  Before: pya(?! )
+  After: ぴゃ
+- IsChecked: true
+  Before: pyu(?! )
+  After: ぴゅ
+- IsChecked: true
+  Before: pye(?! )
+  After: ぴぇ
+- IsChecked: true
+  Before: pyo(?! )
+  After: ぴょ
+- IsChecked: true
+  Before: bya(?! )
+  After: びゃ
+- IsChecked: true
+  Before: byu(?! )
+  After: びゅ
+- IsChecked: true
+  Before: bye(?! )
+  After: びぇ
+- IsChecked: true
+  Before: byo(?! )
+  After: びょ
+- IsChecked: true
+  Before: mya(?! )
+  After: みゃ
+- IsChecked: true
+  Before: myu(?! )
+  After: みゅ
+- IsChecked: true
+  Before: mye(?! )
+  After: みぇ
+- IsChecked: true
+  Before: myo(?! )
+  After: みょ
+- IsChecked: true
+  Before: rya(?! )
+  After: りゃ
+- IsChecked: true
+  Before: ryu(?! )
+  After: りゅ
+- IsChecked: true
+  Before: rye(?! )
+  After: りぇ
+- IsChecked: true
+  Before: ryo(?! )
+  After: りょ
+- IsChecked: true
+  Before: fa(?! )
+  After: ふぁ
+- IsChecked: true
+  Before: fi(?! )
+  After: ふぃ
+- IsChecked: true
+  Before: fu(?! )
+  After: ふ
+- IsChecked: true
+  Before: fe(?! )
+  After: ふぇ
+- IsChecked: true
+  Before: fo(?! )
+  After: ふぉ
+- IsChecked: true
+  Before: dyu(?! )
+  After: でゅ
+- IsChecked: true
+  Before: va(?! )
+  After: ヴぁ
+- IsChecked: true
+  Before: vi(?! )
+  After: ヴぃ
+- IsChecked: true
+  Before: vu(?! )
+  After: ヴ
+- IsChecked: true
+  Before: ve(?! )
+  After: ヴぇ
+- IsChecked: true
+  Before: vo(?! )
+  After: ヴぉ
+- IsChecked: true
+  Before: ka(?! )
+  After: か
+- IsChecked: true
+  Before: ki(?! )
+  After: き
+- IsChecked: true
+  Before: ku(?! )
+  After: く
+- IsChecked: true
+  Before: ke(?! )
+  After: け
+- IsChecked: true
+  Before: ko(?! )
+  After: こ
+- IsChecked: true
+  Before: sa(?! )
+  After: さ
+- IsChecked: true
+  Before: si(?! )
+  After: すぃ
+- IsChecked: true
+  Before: su(?! )
+  After: す
+- IsChecked: true
+  Before: se(?! )
+  After: せ
+- IsChecked: true
+  Before: so(?! )
+  After: そ
+- IsChecked: true
+  Before: ta(?! )
+  After: た
+- IsChecked: true
+  Before: ti(?! )
+  After: てぃ
+- IsChecked: true
+  Before: tu(?! )
+  After: とぅ
+- IsChecked: true
+  Before: te(?! )
+  After: て
+- IsChecked: true
+  Before: to(?! )
+  After: と
+- IsChecked: true
+  Before: na(?! )
+  After: な
+- IsChecked: true
+  Before: ni(?! )
+  After: に
+- IsChecked: true
+  Before: nu(?! )
+  After: ぬ
+- IsChecked: true
+  Before: ne(?! )
+  After: ね
+- IsChecked: true
+  Before: no(?! )
+  After: の
+- IsChecked: true
+  Before: ha(?! )
+  After: は
+- IsChecked: true
+  Before: hi(?! )
+  After: ひ
+- IsChecked: true
+  Before: hu(?! )
+  After: ふ
+- IsChecked: true
+  Before: he(?! )
+  After: へ
+- IsChecked: true
+  Before: ho(?! )
+  After: ほ
+- IsChecked: true
+  Before: ma(?! )
+  After: ま
+- IsChecked: true
+  Before: mi(?! )
+  After: み
+- IsChecked: true
+  Before: mu(?! )
+  After: む
+- IsChecked: true
+  Before: me(?! )
+  After: め
+- IsChecked: true
+  Before: mo(?! )
+  After: も
+- IsChecked: true
+  Before: ra(?! )
+  After: ら
+- IsChecked: true
+  Before: ri(?! )
+  After: り
+- IsChecked: true
+  Before: ru(?! )
+  After: る
+- IsChecked: true
+  Before: re(?! )
+  After: れ
+- IsChecked: true
+  Before: ro(?! )
+  After: ろ
+- IsChecked: true
+  Before: wa(?! )
+  After: わ
+- IsChecked: true
+  Before: wi(?! )
+  After: うぃ
+- IsChecked: true
+  Before: wu(?! )
+  After: うぅ
+- IsChecked: true
+  Before: we(?! )
+  After: うぇ
+- IsChecked: true
+  Before: wo(?! )
+  After: うぉ
+- IsChecked: true
+  Before: ga(?! )
+  After: が
+- IsChecked: true
+  Before: gi(?! )
+  After: ぎ
+- IsChecked: true
+  Before: gu(?! )
+  After: ぐ
+- IsChecked: true
+  Before: ge(?! )
+  After: げ
+- IsChecked: true
+  Before: go(?! )
+  After: ご
+- IsChecked: true
+  Before: za(?! )
+  After: ざ
+- IsChecked: true
+  Before: zi(?! )
+  After: ずぃ
+- IsChecked: true
+  Before: zu(?! )
+  After: ず
+- IsChecked: true
+  Before: ze(?! )
+  After: ぜ
+- IsChecked: true
+  Before: zo(?! )
+  After: ぞ
+- IsChecked: true
+  Before: da(?! )
+  After: だ
+- IsChecked: true
+  Before: di(?! )
+  After: でぃ
+- IsChecked: true
+  Before: du(?! )
+  After: どぅ
+- IsChecked: true
+  Before: de(?! )
+  After: で
+- IsChecked: true
+  Before: do(?! )
+  After: ど
+- IsChecked: true
+  Before: pa(?! )
+  After: ぱ
+- IsChecked: true
+  Before: pi(?! )
+  After: ぴ
+- IsChecked: true
+  Before: pu(?! )
+  After: ぷ
+- IsChecked: true
+  Before: pe(?! )
+  After: ぺ
+- IsChecked: true
+  Before: po(?! )
+  After: ぽ
+- IsChecked: true
+  Before: ba(?! )
+  After: ば
+- IsChecked: true
+  Before: bi(?! )
+  After: び
+- IsChecked: true
+  Before: bu(?! )
+  After: ぶ
+- IsChecked: true
+  Before: be(?! )
+  After: べ
+- IsChecked: true
+  Before: bo(?! )
+  After: ぼ
+- IsChecked: true
+  Before: ya(?! )
+  After: や
+- IsChecked: true
+  Before: yu(?! )
+  After: ゆ
+- IsChecked: true
+  Before: ye(?! )
+  After: いぇ
+- IsChecked: true
+  Before: yo(?! )
+  After: よ
+- IsChecked: true
+  Before: a(?! )
+  After: あ
+- IsChecked: true
+  Before: i(?! )
+  After: い
+- IsChecked: true
+  Before: u(?! )
+  After: う
+- IsChecked: true
+  Before: e(?! )
+  After: え
+- IsChecked: true
+  Before: o(?! )
+  After: お
+- IsChecked: true
+  Before: nn(?! )
+  After: ん
+- IsChecked: true
+  Before: n(?! )
+  After: ん
+IsRegex: true
+NoConvertSuffix: false
+TestText: a kya_C4
+TestSuffix: _C4

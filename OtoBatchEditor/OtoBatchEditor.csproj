@@ -1,0 +1,98 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Version>1.9.9</Version>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.3.0" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.3.0" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.0" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.0" />
+    <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+    <PackageReference Include="Avalonia.Diagnostics" Version="11.3.0">
+      <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+      <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Avalonia.ReactiveUI" Version="11.3.0" />
+    <PackageReference Include="DialogHost.Avalonia" Version="0.9.2" />
+    <PackageReference Include="Material.Avalonia" Version="3.12.0" />
+    <PackageReference Include="Material.Avalonia.DataGrid" Version="3.12.0" />
+    <PackageReference Include="Material.Icons.Avalonia" Version="2.4.1" />
+    <PackageReference Include="NAudio" Version="2.2.1" />
+    <PackageReference Include="ReactiveUI.Fody" Version="19.5.41" />
+    <PackageReference Include="YamlDotNet" Version="16.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="UserControls\SubTitle.axaml.cs">
+      <DependentUpon>SubTitle.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="UserControls\IntInputBox.axaml.cs">
+      <DependentUpon>IntInputBox.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PageAddOtos.axaml.cs">
+      <DependentUpon>PageAddOtos.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PageAddPreC.axaml.cs">
+      <DependentUpon>PageAddPreC.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PageParamShift.axaml.cs">
+      <DependentUpon>PageParamShift.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PageRemoveOtos.axaml.cs">
+      <DependentUpon>PageRemoveOtos.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PageAddSuffixAlias.axaml.cs">
+      <DependentUpon>PageAddSuffixAlias.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PageReplaceAlias.axaml.cs">
+      <DependentUpon>PageReplaceAlias.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PageDuplicate.axaml.cs">
+      <DependentUpon>PageDuplicate.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PageTrim.axaml.cs">
+      <DependentUpon>PageTrim.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PageUst.axaml.cs">
+      <DependentUpon>PageUst.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PageRound.axaml.cs">
+      <DependentUpon>PageRound.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Presets\ReplaceAlias_%27あ→あ・.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Presets\ReplaceAlias_X-SAMPA→eveCVVC.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Presets\ReplaceAlias_あ ・→a ・.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Presets\ReplaceAlias_ローマ字→ひらがな.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Presets\ReplaceAlias_語尾子音を大文字に.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Presets\ReplaceAlias_重複の数字を削除.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Presets\ReplaceAlias_音階名の前に表情を追加.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,43 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:OtoBatchEditor"
+             xmlns:vm="using:OtoBatchEditor.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="490" d:DesignHeight="690"
+             x:Class="OtoBatchEditor.Views.PageRemoveOtos"
+             x:DataType="vm:RemoveOtosViewModel"
+             xmlns:styles="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:dataGrid="clr-namespace:Material.Avalonia.DataGrid;assembly=Material.Avalonia.DataGrid">
+  <DockPanel>
+    <styles:ColorZone Classes="header">
+      <DockPanel Margin="0,0,60,0">
+        <TextBlock Text="不要な行を検索して削除" Classes="header"/>
+        <local:PresetTip Name="preset"/>
+      </DockPanel>
+    </styles:ColorZone>
+
+    <ScrollViewer>
+      <StackPanel Classes="content">
+        <TextBlock Margin="15" TextWrapping="Wrap" >
+          <Run Text="oto.iniから、エイリアスの文字が部分一致した行を削除します。" /><LineBreak />
+          <Run Text="[APPEND]でSuffixを指定できます。" /><LineBreak />
+          <LineBreak />
+          <Run Text="例）あ強C4、い強C4・・・の場合、[APPEND]=強C4" /><LineBreak />
+          <Run Text="　R[APPEND] と入力すれば、 a R強C4 などが削除できます" />
+        </TextBlock>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+          <TextBox Text="{Binding SearchText}" Watermark="検索する文字" Margin="10" Width="200" TextAlignment="Center" />
+          <Button Content="[APPEND]を追加" Margin="10" Command="{Binding AddAppend}" />
+        </StackPanel>
+        <CheckBox IsChecked="{Binding IsRegex}" Content="検索に正規表現を使用する" Margin="10" HorizontalAlignment="Center" />
+
+        <TextBlock Classes="Note"/>
+
+        <Button Command="{Binding OK}" Classes="Ok" Content="確認して削除" Width="120"/>
+      </StackPanel>
+    </ScrollViewer>
+  </DockPanel>
+</UserControl>

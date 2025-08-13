@@ -1,0 +1,92 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:OtoBatchEditor"
+             xmlns:vm="using:OtoBatchEditor.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="490" d:DesignHeight="690"
+             x:Class="OtoBatchEditor.Views.PageReplaceAlias"
+             x:DataType="vm:ReplaceAliasViewModel"
+             xmlns:styles="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:dataGrid="clr-namespace:Material.Avalonia.DataGrid;assembly=Material.Avalonia.DataGrid">
+  <DockPanel>
+    <styles:ColorZone Classes="header">
+      <DockPanel Margin="0,0,60,0">
+        <TextBlock Text="エイリアスを変換" Classes="header"/>
+        <local:PresetTip Name="preset"/>
+      </DockPanel>
+    </styles:ColorZone>
+
+    <ScrollViewer>
+      <StackPanel Classes="content">
+        <TextBlock Margin="15" TextWrapping="Wrap" >
+          <Run Text="・上から順に、部分一致で変換します" /><LineBreak />
+          <Run Text="・[Suffix] でエイリアス中のSuffixを指定できます。多くの行の末尾に共通してついているものを自動的にSuffixと認識します" /><LineBreak />
+          <Run Text="　例）あ強C4、い強C4・・・の場合、[Suffix]=強C4" /><LineBreak />
+          <Run Text="　例）[Suffix] → 強[Suffix] と入力すると、[あC4] は [あ強C4] になる" /><LineBreak />
+          <Run Text="・Afterを空欄にすることでBeforeの文字を削除できます" /><LineBreak />
+          <Run Text="・Afterにのみ[Suffix]を使用することはできません" /><LineBreak />
+          <LineBreak />
+          <Run Text="※後ろに表情や音階などを付ける場合は、「エイリアス末尾に音階名などを追加」を使用してください" />
+        </TextBlock>
+
+        <DockPanel Margin="15">
+          <StackPanel>
+            <CheckBox Content="Beforeに正規表現を使用する" IsChecked="{Binding IsRegex}" HorizontalAlignment="Left"/>
+            <CheckBox Content="Suffixは変換しない" IsChecked="{Binding NoConvertSuffix}" HorizontalAlignment="Left"/>
+          </StackPanel>
+          <Button Content="[Suffix]をコピー" Command="{Binding CopyToClipboard}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        </DockPanel>
+
+        <styles:Card Margin="15,0,15,15">
+          <StackPanel Margin="5" Classes="grid">
+            <Grid ColumnDefinitions="30,*,*,40,35" Margin="0,0,0,10">
+              <TextBlock Text="Before" Grid.Column="1"/>
+              <TextBlock Text="After" Grid.Column="2"/>
+              <TextBlock Text="削除" Grid.Column="3"/>
+              <styles:FloatingButton Command="{Binding AddRow}" Classes="Light plus" Grid.Column="4"/>
+            </Grid>
+
+            <ItemsControl ItemsSource="{Binding ReplaceItems}">
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <Grid ColumnDefinitions="30,*,*,40,35" Margin="2">
+                    <CheckBox IsChecked="{Binding IsChecked}" Grid.Column="0" HorizontalAlignment="Center"/>
+                    <TextBox Text="{Binding Before}" Grid.Column="1"/>
+                    <TextBox Text="{Binding After}" Grid.Column="2"/>
+                    <styles:FloatingButton Command="{Binding Parent.DeleteRow}" Classes="minus" Grid.Column="3" CommandParameter="{Binding}"/>
+                  </Grid>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </StackPanel>
+        </styles:Card>
+
+        <styles:Card Margin="15,0,15,15">
+          <StackPanel Margin="5">
+            <TextBlock Text="変換テスト" FontWeight="Bold"/>
+            <Grid RowDefinitions="*,*,*" ColumnDefinitions="Auto,*,Auto" Margin="10,10,10,0">
+              <TextBlock Text="変換元：" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+              <TextBox Text="{Binding TestText}" Grid.Row="0" Grid.Column="1" Width="100" HorizontalAlignment="Left"/>
+              <TextBlock Text="Suffix：" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
+              <TextBox Text="{Binding TestSuffix}" Grid.Row="1" Grid.Column="1" Width="100" HorizontalAlignment="Left"/>
+              <TextBlock Text="変換結果：" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+              <TextBlock Text="{Binding TestResult}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="8"/>
+              
+              <Button Command="{Binding ReplaceTest}" Padding="8" VerticalAlignment="Center" Classes="accent" Grid.RowSpan="3" Grid.Column="2">
+                <materialIcons:MaterialIcon Kind="Refresh"/>
+              </Button>
+            </Grid>
+            <StackPanel Orientation="Horizontal">
+            </StackPanel>
+          </StackPanel>
+        </styles:Card>
+
+        <TextBlock Classes="Note"/>
+
+        <Button Command="{Binding OK}" Classes="Ok"/>
+      </StackPanel>
+    </ScrollViewer>
+  </DockPanel>
+</UserControl>

@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:OtoBatchEditor.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="490" d:DesignHeight="690"
+             x:Class="OtoBatchEditor.Views.PageUnderScore"
+             x:DataType="vm:UnderScoreViewModel"
+             xmlns:styles="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+  <DockPanel>
+    <styles:ColorZone Classes="header">
+      <TextBlock Text="wav名に_をつける" Classes="header"/>
+    </styles:ColorZone>
+
+    <ScrollViewer>
+      <StackPanel Classes="content">
+
+        <TextBlock Margin="15" TextWrapping="Wrap" >
+          <Run Text="wavファイル名と、それに紐づく周波数表等のファイル名を一括変更します。" /><LineBreak/>
+          <LineBreak/>
+          <Run Text="ああいあうえあ.wav　が" /><LineBreak/>
+          <Run Text="_ああいあうえあ.wav　になります。" /><LineBreak/>
+          <LineBreak/>
+          <Run Text="※連続音やCVVCでは、エイリアスの候補にwavファイル名が表示されてしまうのを防ぐため、wavファイル名の先頭にアンダースコア(_)をつける慣習があります。" />
+        </TextBlock>
+
+        <TextBlock Classes="Note"/>
+
+        <Button Command="{Binding OK}" Classes="Ok"/>
+      </StackPanel>
+    </ScrollViewer>
+  </DockPanel>
+</UserControl>

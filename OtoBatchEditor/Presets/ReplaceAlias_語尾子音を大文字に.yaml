@@ -1,0 +1,84 @@
+﻿PresetType: ReplaceAlias
+ReplaceItems:
+- IsChecked: true
+  Before: " ky"
+  After: " KY"
+- IsChecked: true
+  Before: " gy"
+  After: " GY"
+- IsChecked: true
+  Before: " sh"
+  After: " SH"
+- IsChecked: true
+  Before: " ts"
+  After: " TS"
+- IsChecked: true
+  Before: " ch"
+  After: " CH"
+- IsChecked: true
+  Before: " ny"
+  After: " NY"
+- IsChecked: true
+  Before: " hy"
+  After: " HY"
+- IsChecked: true
+  Before: " by"
+  After: " BY"
+- IsChecked: true
+  Before: " py"
+  After: " PY"
+- IsChecked: true
+  Before: " my"
+  After: " MY"
+- IsChecked: true
+  Before: " ry"
+  After: " RY"
+- IsChecked: true
+  Before: " k"
+  After: " K"
+- IsChecked: true
+  Before: " g"
+  After: " G"
+- IsChecked: true
+  Before: " s"
+  After: " S"
+- IsChecked: true
+  Before: " z"
+  After: " Z"
+- IsChecked: true
+  Before: " j"
+  After: " J"
+- IsChecked: true
+  Before: " t"
+  After: " T"
+- IsChecked: true
+  Before: " d"
+  After: " D"
+- IsChecked: true
+  Before: " n"
+  After: " N"
+- IsChecked: true
+  Before: " h"
+  After: " H"
+- IsChecked: true
+  Before: " f"
+  After: " F"
+- IsChecked: true
+  Before: " p"
+  After: " P"
+- IsChecked: true
+  Before: " m"
+  After: " M"
+- IsChecked: true
+  Before: " y"
+  After: " Y"
+- IsChecked: true
+  Before: " w"
+  After: " W"
+- IsChecked: true
+  Before: " v"
+  After: " V"
+IsRegex: false
+NoConvertSuffix: true
+TestText: a ky_C4
+TestSuffix: _C4
