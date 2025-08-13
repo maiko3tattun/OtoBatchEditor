@@ -20,16 +20,15 @@ Write-Host "All 4 builds completed."
 # -----------------------------------
 # macOS .app バンドル作成（x64とARM64）
 foreach ($macRid in @("osx-x64", "osx-arm64")) {
-    $Executable = "$PublishDir\$macRid\$AppName"
-    $AppBundleDir = "$PublishDir\$AppName-$macRid.app\Contents"
+    $SourceDir = "$PublishDir\$macRid"
+    $AppBundleDir = "$PublishDir\$macRid-app\$AppName.app\Contents"
     New-Item -ItemType Directory -Force -Path "$AppBundleDir\MacOS"
     New-Item -ItemType Directory -Force -Path "$AppBundleDir\Resources"
 
-    Copy-Item $Executable "$AppBundleDir\MacOS"
-    Copy-Item "$AppName\Info.plist" $AppBundleDir
+    Copy-Item "$SourceDir\*" "$AppBundleDir\MacOS" -Recurse -Force
+    Copy-Item "$AppName\Info.plist" $AppBundleDir -Force
 
     Write-Host ".app bundle created: $AppBundleDir"
-    Write-Host "Next step on macOS: chmod +x $AppBundleDir\MacOS\$AppName"
 }
 # -----------------------------
 
@@ -40,3 +39,4 @@ foreach ($macRid in @("osx-x64", "osx-arm64")) {
 
 # Macではインストール後実行前にターミナルでコマンドを叩く必要がある
 # chmod +x /Applications/OtoBatchEditor.app/Contents/MacOS/OtoBatchEditor
+# xattr -rc /Applications/OtoBatchEditor.app

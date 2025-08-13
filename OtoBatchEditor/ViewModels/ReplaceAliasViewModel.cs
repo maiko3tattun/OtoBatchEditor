@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using YamlDotNet.Serialization;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace OtoBatchEditor.ViewModels
 {
