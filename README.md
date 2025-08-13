@@ -4,6 +4,10 @@
 複数のoto.iniをまとめて編集するソフトです。
 行の追加や削除、エイリアスの置換、数値の四捨五入などができます。
 
+## ダウンロード
+https://github.com/maiko3tattun/OtoBatchEditor/releases
+Assetsを開き、Windowsならだいたいwin-x64.zip、Windows Armならwin-arm64.zipをダウンロードしてください。
+
 ## 起動方法
 - Windows: zipファイルを展開し、「OtoBatchEditor.exe」を開くとスタンドアロンで起動します。
 - setParamのpluginsフォルダにインストールするとsetParam内からプラグインとして起動できます。
