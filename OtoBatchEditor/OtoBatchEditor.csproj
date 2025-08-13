@@ -94,5 +94,8 @@
     <None Update="Presets\ReplaceAlias_音階名の前に表情を追加.yaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Readme[読んでね].txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
