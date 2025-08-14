@@ -16,14 +16,16 @@
             }
         }
 
-        public static double DoubleValidation(string input, double defaultValue, double min, double max)
+        public static double DoubleValidation(string input, double defaultValue, double min, double max, out bool valid)
         {
             if (double.TryParse(input, out double result) && result >= min && result <= max)
             {
+                valid = true;
                 return result;
             }
             else
             {
+                valid = false;
                 return defaultValue;
             }
         }

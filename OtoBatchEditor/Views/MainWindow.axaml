@@ -41,6 +41,7 @@
               <views:PageBackup/>
               <views:PageRound/>
               <views:PageParamShift/>
+              <views:PagePreutter/>
               <views:PageAddOtos/>
               <views:PageAddVC/>
               <views:PageAddPreC/>

@@ -137,6 +137,7 @@ namespace OtoBatchEditor
             Copy();
             try
             {
+                otoList.ForEach(oto => oto.Round());
                 File.WriteAllLines(FilePath, otoList.Select(oto => oto.ToString()), Encoding);
                 return true;
             }

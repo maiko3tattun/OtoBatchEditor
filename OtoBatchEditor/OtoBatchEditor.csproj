@@ -61,6 +61,9 @@
     <Compile Update="Views\PageDuplicate.axaml.cs">
       <DependentUpon>PageDuplicate.axaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\PagePreutter.axaml.cs">
+      <DependentUpon>PagePreutter.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\PageTrim.axaml.cs">
       <DependentUpon>PageTrim.axaml</DependentUpon>
     </Compile>

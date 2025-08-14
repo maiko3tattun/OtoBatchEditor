@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace OtoBatchEditor
@@ -142,6 +143,15 @@ namespace OtoBatchEditor
             {
                 return $"{FileName}={Alias},{Offset},{Consonant},{Blank},{Pre},{Ovl}";
             }
+        }
+
+        public void Round()
+        {
+            Offset = Math.Round(Offset, 3);
+            Consonant = Math.Round(Consonant, 3);
+            Blank = Math.Round(Blank, 3);
+            Pre = Math.Round(Pre, 3);
+            Ovl = Math.Round(Ovl, 3);
         }
     }
 

@@ -23,7 +23,8 @@ namespace OtoBatchEditor.ViewModels
         
         public async void OK()
         {
-            if (!int.TryParse(Shift, out int shift) || shift == 0)
+            var shift = NumValidation.IntValidation(Shift, 1, 1, 100, out bool valid);
+            if (!valid)
             {
                 await MainWindowViewModel.MessageDialogOpen("0以外の整数を入力してください");
                 return;

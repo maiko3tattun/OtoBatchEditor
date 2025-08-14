@@ -33,7 +33,7 @@
 
           <StackPanel Orientation="Horizontal" Margin="0,10" >
             <TextBlock Text="消すときに残す個数：" VerticalAlignment="Center" />
-            <TextBox Text="{Binding LeaveCount}" Width="50" TextAlignment="Center" />
+            <TextBox Text="{Binding LeaveCount, UpdateSourceTrigger=LostFocus}" Width="50" TextAlignment="Center" />
           </StackPanel>
           
           <CheckBox Content="2個以上残すときに番号を振る" IsChecked="{Binding AddNum}" Margin=""/>

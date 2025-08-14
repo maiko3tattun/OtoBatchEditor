@@ -1,0 +1,59 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:OtoBatchEditor"
+             xmlns:vm="using:OtoBatchEditor.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="490" d:DesignHeight="690"
+             x:Class="OtoBatchEditor.Views.PagePreutter"
+             x:DataType="vm:PreutterViewModel"
+             xmlns:styles="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+  <DockPanel>
+    <styles:ColorZone Classes="header">
+      <DockPanel Margin="0,0,60,0">
+        <TextBlock Text="先行発声とオーバーラップを調整" Classes="header"/>
+        <local:PresetTip Name="preset"/>
+      </DockPanel>
+    </styles:ColorZone>
+
+    <ScrollViewer>
+      <StackPanel Classes="content">
+        <StackPanel Margin="15">
+          <CheckBox Content="先行発声を調整" IsChecked="{Binding Preutter}"/>
+          <StackPanel Orientation="Horizontal" Margin="15,10,15,0">
+            <StackPanel>
+              <RadioButton Content="固定値" IsChecked="{Binding PreFix}"/>
+              <RadioButton Content="相対値（現在の先行発声に加算）" IsChecked="{Binding !PreFix}"/>
+            </StackPanel>
+            <TextBox Text="{Binding PreValue, UpdateSourceTrigger=LostFocus}" Width="80" Margin="10" VerticalAlignment="Center"/>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Margin="15">
+          <CheckBox Content="オーバーラップを調整" IsChecked="{Binding Overlap}"/>
+
+          <StackPanel Margin="15,10,15,0">
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="先行発声の 1/" VerticalAlignment="Center" Margin="3,0,0,3"/>
+              <TextBox Text="{Binding OvlValue, UpdateSourceTrigger=LostFocus}" Width="50" VerticalAlignment="Center" TextAlignment="Left"/>
+            </StackPanel>
+            <CheckBox Content="四捨五入して整数で出力" IsChecked="{Binding OvlRound}" Margin="0,5,0,0"/>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Margin="15">
+          <CheckBox Content="フィルター" Classes="accent" IsChecked="{Binding Filter}"/>
+          <StackPanel Orientation="Horizontal" Margin="15,10,15,0">
+            <TextBox Text="{Binding FilterValue}" Width="100"/>
+            <TextBlock Text="を含むエイリアス（正規表現）" VerticalAlignment="Center" Margin="0,0,0,3"/>
+          </StackPanel>
+        </StackPanel>
+
+        <TextBlock Classes="Note"/>
+
+        <Button Command="{Binding OK}" Classes="Ok"/>
+      </StackPanel>
+    </ScrollViewer>
+  </DockPanel>
+</UserControl>

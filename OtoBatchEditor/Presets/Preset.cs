@@ -109,6 +109,8 @@ namespace OtoBatchEditor
                     return new BackupPreset((viewModel as BackupViewModel)!, name);
                 case PresetTypes.ParamShift:
                     return new ParamShiftPreset((viewModel as ParamShiftViewModel)!, name);
+                case PresetTypes.Preutter:
+                    return new PreutterPreset((viewModel as PreutterViewModel)!, name);
                 case PresetTypes.AddOtos:
                     return new AddOtosPreset((viewModel as AddOtosViewModel)!, name);
                 case PresetTypes.AddVC:
@@ -147,6 +149,7 @@ namespace OtoBatchEditor
         Backup,
         Round,
         ParamShift,
+        Preutter,
         AddOtos,
         AddVC,
         AddPreC,
