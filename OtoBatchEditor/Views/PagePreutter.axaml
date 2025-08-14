@@ -19,12 +19,35 @@
 
     <ScrollViewer>
       <StackPanel Classes="content">
-        <StackPanel Margin="15" VerticalAlignment="Center">
-          <CheckBox Content="左ブランク" IsChecked="{Binding Offset}"/>
-          <CheckBox Content="先行発声" IsChecked="{Binding Pre}"/>
-          <CheckBox Content="オーバーラップ" IsChecked="{Binding Ovl}"/>
-          <CheckBox Content="子音範囲" IsChecked="{Binding Consonant}"/>
-          <CheckBox Content="右ブランク" IsChecked="{Binding Blank}"/>
+        <StackPanel Margin="15">
+          <CheckBox Content="先行発声を調整" IsChecked="{Binding Preutter}"/>
+          <StackPanel Orientation="Horizontal" Margin="15,10,15,0">
+            <StackPanel>
+              <RadioButton Content="固定値" IsChecked="{Binding PreFix}"/>
+              <RadioButton Content="相対値（現在の先行発声に加算）" IsChecked="{Binding !PreFix}"/>
+            </StackPanel>
+            <TextBox Text="{Binding PreValue, UpdateSourceTrigger=LostFocus}" Width="80" Margin="10" VerticalAlignment="Center"/>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Margin="15">
+          <CheckBox Content="オーバーラップを調整" IsChecked="{Binding Overlap}"/>
+
+          <StackPanel Margin="15,10,15,0">
+            <StackPanel Orientation="Horizontal">
+              <TextBlock Text="先行発声の 1/" VerticalAlignment="Center" Margin="3,0,0,3"/>
+              <TextBox Text="{Binding OvlValue, UpdateSourceTrigger=LostFocus}" Width="50" VerticalAlignment="Center" TextAlignment="Left"/>
+            </StackPanel>
+            <CheckBox Content="四捨五入して整数で出力" IsChecked="{Binding OvlRound}" Margin="0,5,0,0"/>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Margin="15">
+          <CheckBox Content="フィルター" Classes="accent" IsChecked="{Binding Filter}"/>
+          <StackPanel Orientation="Horizontal" Margin="15,10,15,0">
+            <TextBox Text="{Binding FilterValue}" Width="100"/>
+            <TextBlock Text="を含むエイリアス（正規表現）" VerticalAlignment="Center" Margin="0,0,0,3"/>
+          </StackPanel>
         </StackPanel>
 
         <TextBlock Classes="Note"/>

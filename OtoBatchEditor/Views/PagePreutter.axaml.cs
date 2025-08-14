@@ -12,15 +12,15 @@ public partial class PagePreutter : UserControl
 
         var viewModel = new PreutterViewModel();
         DataContext = viewModel;
-        //preset.DataContext = new PresetTipViewModel(PresetTypes.Preutter, viewModel);
+        preset.DataContext = new PresetTipViewModel(PresetTypes.Preutter, viewModel);
 
-        //if (Preset.LatestPresets.FirstOrDefault(p => p.PresetType == PresetTypes.Preutter) is PreutterPreset latest)
-        //{
-        //    latest.Load();
-        //}
-        //else
-        //{
-        //    Preset.LatestPresets.Add(new PreutterPreset(viewModel, "Latest"));
-        //}
+        if (Preset.LatestPresets.FirstOrDefault(p => p.PresetType == PresetTypes.Preutter) is PreutterPreset latest)
+        {
+            latest.Load();
+        }
+        else
+        {
+            Preset.LatestPresets.Add(new PreutterPreset(viewModel, "Latest"));
+        }
     }
 }
