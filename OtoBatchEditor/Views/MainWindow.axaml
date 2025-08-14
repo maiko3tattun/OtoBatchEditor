@@ -26,13 +26,15 @@
       <styles:SnackbarHost HostName="MainWindowSnackbar">
         <styles:NavigationDrawer RightDrawerOpened="{Binding IsRightDrawerOpen, Mode=TwoWay}" RightDrawerWidth="220">
           <styles:NavigationDrawer.RightDrawerContent>
-            <StackPanel VerticalAlignment="Stretch">
-              <Button HorizontalAlignment="Right" Command="{Binding ToggleDrawer}"
-                      Theme="{StaticResource MaterialFlatButton}" Width="54" Height="54" Margin="10,0" CornerRadius="26">
-                <materialIcons:MaterialIcon Kind="Close" Width="30" Height="30" Margin="10,5"/>
-              </Button>
-              <ListBox ItemsSource="{Binding RightPages}" SelectedIndex="{Binding DrawerSelectedIndex}" />
-            </StackPanel>
+            <ScrollViewer>
+              <StackPanel VerticalAlignment="Stretch">
+                <Button HorizontalAlignment="Right" Command="{Binding ToggleDrawer}"
+                        Theme="{StaticResource MaterialFlatButton}" Width="54" Height="54" Margin="10,0" CornerRadius="26">
+                  <materialIcons:MaterialIcon Kind="Close" Width="30" Height="30" Margin="10,5"/>
+                </Button>
+                <ListBox ItemsSource="{Binding RightPages}" SelectedIndex="{Binding DrawerSelectedIndex}"/>
+              </StackPanel>
+            </ScrollViewer>
           </styles:NavigationDrawer.RightDrawerContent>
 
           <Panel VerticalAlignment="Stretch" Focusable="True">

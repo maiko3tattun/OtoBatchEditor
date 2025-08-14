@@ -17,6 +17,28 @@
       </StackPanel>
     </Border>
   </Design.PreviewWith>
+  
+  <Style Selector="Window">
+    <Setter Property="FontFamily" Value="{DynamicResource NotoSans}"/>
+  </Style>
+
+  <Style Selector="TextBlock">
+    <Setter Property="TextWrapping" Value="Wrap"/>
+    <Setter Property="FontSize" Value="14"/>
+    <Setter Property="LineHeight" Value="16"/>
+  </Style>
+
+  <Style Selector="TextBlock.header">
+    <Setter Property="FontSize" Value="17"/>
+    <Setter Property="Margin" Value="10,0,0,0"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+
+  <Style Selector="TextBlock.Note">
+    <Setter Property="Text" Value="処理前に「oto_backup.ini」を作成します。すでにある場合は上書きします。"/>
+    <Setter Property="Margin" Value="15"/>
+    <Setter Property="FontSize" Value="13"/>
+  </Style>
 
   <Style Selector="StackPanel">
     <Setter Property="ClipToBounds" Value="False"/>
@@ -69,22 +91,6 @@
     <Setter Property="Mode" Value="PrimaryMid"/>
     <Setter Property="DockPanel.Dock" Value="Top"/>
     <Setter Property="Height" Value="54"/>
-  </Style>
-
-  <Style Selector="TextBlock">
-    <Setter Property="TextWrapping" Value="Wrap"/>
-  </Style>
-
-  <Style Selector="TextBlock.header">
-    <Setter Property="FontSize" Value="17"/>
-    <Setter Property="Margin" Value="10,0,0,0"/>
-    <Setter Property="VerticalAlignment" Value="Center"/>
-  </Style>
-
-  <Style Selector="TextBlock.Note">
-    <Setter Property="Text" Value="処理前に「oto_backup.ini」を作成します。すでにある場合は上書きします。"/>
-    <Setter Property="Margin" Value="15"/>
-    <Setter Property="FontSize" Value="13"/>
   </Style>
 
   <Style Selector="CheckBox.Overwrite">

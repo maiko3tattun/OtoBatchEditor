@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
+    <AvaloniaResource Include="Assets\NotoSans-Regular.ttf" />
   </ItemGroup>
 
   <ItemGroup>
