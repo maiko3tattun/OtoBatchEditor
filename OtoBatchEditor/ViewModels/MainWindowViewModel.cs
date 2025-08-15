@@ -2,6 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Input.Platform;
+using Avalonia.Media;
 using Avalonia.Threading;
 using DialogHostAvalonia;
 using Material.Styles.Controls;
@@ -75,6 +76,13 @@ namespace OtoBatchEditor.ViewModels
             catch (Exception ex)
             {
                 DebagMode.AddError(ex);
+            }
+
+            var resources = Application.Current?.Resources;
+            var theme = Application.Current?.ActualThemeVariant;
+            if (theme == Avalonia.Styling.ThemeVariant.Dark)
+            {
+                resources["CardBackGroundBrush"] = new SolidColorBrush(Color.Parse("#008ba3"));
             }
         }
 

@@ -12,6 +12,7 @@
         xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
         Icon="/Assets/avalonia-logo.ico"
         Title="oto.iniまとめて改造ましーん"
+        WindowStartupLocation="CenterScreen"
         Closing="WhenClosing" KeyDown="MainWindowsKeyDown">
     <Design.DataContext>
         <vm:MainWindowViewModel/>
