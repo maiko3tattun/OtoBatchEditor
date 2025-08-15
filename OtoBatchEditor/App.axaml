@@ -7,7 +7,8 @@
              xmlns:themes="clr-namespace:Material.Styles.Themes;assembly=Material.Styles"
              xmlns:dataGrid="clr-namespace:Material.Avalonia.DataGrid;assembly=Material.Avalonia.DataGrid"
              xmlns:dialogHostAvalonia="clr-namespace:DialogHostAvalonia;assembly=DialogHost.Avalonia"
-             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             Name="oto.iniまとめて改造ましーん">
   <Application.DataTemplates>
     <local:ViewLocator/>
   </Application.DataTemplates>
@@ -23,4 +24,8 @@
   <Application.Resources>
     <SolidColorBrush x:Key="MaterialPrimaryLightBrush" Color="#80deea"></SolidColorBrush>
   </Application.Resources>
+  
+  <NativeMenu.Menu>
+    <NativeMenu/>
+  </NativeMenu.Menu>
 </Application>
