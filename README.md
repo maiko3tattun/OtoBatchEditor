@@ -20,8 +20,8 @@ Assetsを開き、Windowsならだいたい`win-x64`、Windows Armなら`win-arm
     原音設定中のoto.iniと起動後に読み込んだoto.iniを両方処理できます（oto-autoEstimation.iniがsetParamで原音設定中のデータです）
 - macOS:  
 1. zipファイルを展開し、「OtoBatchEditor.app」をApplicationフォルダにコピーする
-2. ターミナルで`chmod +x /Applications/OtoBatchEditor.app/Contents/MacOS/OtoBatchEditor`を実行する
-3. ターミナルで`xattr -rc /Applications/OtoBatchEditor.app`を実行する
+2. ターミナルで`chmod +x /Applications/OtoBatchEditor.app/Contents/MacOS/OtoBatchEditor`を実行する（初回のみ）
+3. ターミナルで`xattr -rc /Applications/OtoBatchEditor.app`を実行する（初回のみ）
 4. OtoBatchEditor.appを開く
 
 ## 使い方
@@ -39,15 +39,23 @@ Assetsを開き、Windowsならだいたい`win-x64`、Windows Armなら`win-arm
 - 再配布は禁止です。
 - 本ソフトを利用して発生した問題については一切責任を負いかねますのでご了承下さい。
 - うまく動かない、バグを見つけた場合等は、できるだけご連絡ください。  
-バグ報告ガイドライン：https://ameblo.jp/maiko3utau/entry-12822371321.html
 
 ## 作者
 まいこ  
+バグ報告ガイドライン：https://ameblo.jp/maiko3utau/entry-12822371321.html
+
 Twitter: https://twitter.com/maiko3tattun  
 HP: https://maiko3tattun.wixsite.com/mysite  
 mail: maikotattun@yahoo.co.jp  
 
 ## 更新履歴（ver2.0以降）
+2025/08/15 v1.99-beta2
+- macOS対応
+- "先行発声とオーバーラップを調整"を追加
+- otoini出力時の桁を3桁に制限
+- 数値入力中にvalidationが発生するのを修正
+- スタイルを調整
+
 2025/08/13 v1.99-beta1
 - 何から何まで作り直した
 - ほとんどのページにプリセットと前回値の保存を実装
