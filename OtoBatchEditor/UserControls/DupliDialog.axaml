@@ -10,75 +10,71 @@
              xmlns:styles="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
              xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
   <StackPanel Margin="20">
-    <ScrollViewer HorizontalScrollBarVisibility="Auto">
-      <StackPanel>
-        <TextBlock Text="残すものを選択してください"/>
+    <TextBlock Text="残すものを選択してください"/>
 
-        <StackPanel Orientation="Horizontal" Margin="5">
-          <StackPanel.Styles>
-            <Style Selector="TextBlock">
-              <Setter Property="FontSize" Value="13"/>
-              <Setter Property="FontWeight" Value="Bold"/>
-              <Setter Property="Width" Value="50"/>
-              <Setter Property="Margin" Value="5,0"/>
-              <Setter Property="VerticalAlignment" Value="Center"/>
-              <Setter Property="HorizontalAlignment" Value="Center"/>
-            </Style>
-          </StackPanel.Styles>
-          <TextBlock Text="残す" Width="25"/>
-          <TextBlock Text="エイリアス"/>
-          <TextBlock Text="処理後" Width="70"/>
-          <TextBlock Text="フォルダ" Width="70"/>
-          <TextBlock Text="wav" Width="150"/>
-          <TextBlock Text="左ブランク"/>
-          <TextBlock Text="オーバーラップ"/>
-          <TextBlock Text="先行発声"/>
-          <TextBlock Text="子音部"/>
-          <TextBlock Text="右ブランク"/>
-        </StackPanel>
+    <StackPanel Orientation="Horizontal" Margin="5">
+      <StackPanel.Styles>
+        <Style Selector="TextBlock">
+          <Setter Property="FontSize" Value="13"/>
+          <Setter Property="FontWeight" Value="Bold"/>
+          <Setter Property="Width" Value="50"/>
+          <Setter Property="Margin" Value="5,0"/>
+          <Setter Property="VerticalAlignment" Value="Center"/>
+          <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+      </StackPanel.Styles>
+      <TextBlock Text="残す" Width="25"/>
+      <TextBlock Text="エイリアス"/>
+      <TextBlock Text="処理後" Width="70"/>
+      <TextBlock Text="フォルダ" Width="70"/>
+      <TextBlock Text="wav" Width="150"/>
+      <TextBlock Text="左ブランク"/>
+      <TextBlock Text="オーバーラップ"/>
+      <TextBlock Text="先行発声"/>
+      <TextBlock Text="子音部"/>
+      <TextBlock Text="右ブランク"/>
+    </StackPanel>
 
-        <ItemsControl ItemsSource="{Binding Groups}">
-          <ItemsControl.ItemTemplate>
-            <DataTemplate>
-              <ItemsControl ItemsSource="{Binding Items}" Margin="0,0,0,20">
-                <ItemsControl.ItemTemplate>
-                  <DataTemplate>
-                    <StackPanel Orientation="Horizontal" PointerEntered="PanelPointerEntered" Background="Transparent">
-                      <StackPanel.Styles>
-                        <Style Selector="TextBlock">
-                          <Setter Property="Width" Value="50"/>
-                          <Setter Property="Margin" Value="5,0"/>
-                          <Setter Property="VerticalAlignment" Value="Center"/>
-                          <Setter Property="HorizontalAlignment" Value="Center"/>
-                          <Setter Property="TextWrapping" Value="NoWrap"/>
-                        </Style>
-                      </StackPanel.Styles>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" MaxHeight="500">
+      <ItemsControl ItemsSource="{Binding Groups}">
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <ItemsControl ItemsSource="{Binding Items}" Margin="0,0,0,20">
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <StackPanel Orientation="Horizontal" PointerEntered="PanelPointerEntered" Background="Transparent">
+                    <StackPanel.Styles>
+                      <Style Selector="TextBlock">
+                        <Setter Property="Width" Value="50"/>
+                        <Setter Property="Margin" Value="5,0"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                        <Setter Property="TextWrapping" Value="NoWrap"/>
+                      </Style>
+                    </StackPanel.Styles>
 
-                      <CheckBox IsChecked="{Binding Selected}" Width="30" Margin="5,0"/>
-                      <TextBlock Text="{Binding Oto.Alias}"/>
-                      <TextBox Text="{Binding NewAlias}" Width="70" Margin="5,0" TextAlignment="Left"/>
-                      <TextBlock Text="{Binding DirectorName}" Width="70"/>
-                      <TextBlock Text="{Binding Oto.FileName}" Width="150"/>
-                      <TextBlock Text="{Binding Oto.Offset}"/>
-                      <TextBlock Text="{Binding Oto.Ovl}"/>
-                      <TextBlock Text="{Binding Oto.Pre}"/>
-                      <TextBlock Text="{Binding Oto.Consonant}"/>
-                      <TextBlock Text="{Binding Oto.Blank}"/>
-                    </StackPanel>
-                  </DataTemplate>
-                </ItemsControl.ItemTemplate>
-              </ItemsControl>
-            </DataTemplate>
-          </ItemsControl.ItemTemplate>
-        </ItemsControl>
-        
-      </StackPanel>
+                    <CheckBox IsChecked="{Binding Selected}" Width="30" Margin="5,0"/>
+                    <TextBlock Text="{Binding Oto.Alias}"/>
+                    <TextBox Text="{Binding NewAlias}" Width="70" Margin="5,0" TextAlignment="Left"/>
+                    <TextBlock Text="{Binding DirectorName}" Width="70"/>
+                    <TextBlock Text="{Binding Oto.FileName}" Width="150"/>
+                    <TextBlock Text="{Binding Oto.Offset}"/>
+                    <TextBlock Text="{Binding Oto.Ovl}"/>
+                    <TextBlock Text="{Binding Oto.Pre}"/>
+                    <TextBlock Text="{Binding Oto.Consonant}"/>
+                    <TextBlock Text="{Binding Oto.Blank}"/>
+                  </StackPanel>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
     </ScrollViewer>
     
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,20,10,0" Spacing="20">
       <Button Content="OK" Width="100" Click="OKClick"/>
       <Button Content="キャンセル" Width="100" Click="CancelClick"/>
     </StackPanel>
-    
   </StackPanel>
 </UserControl>

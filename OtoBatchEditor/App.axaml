@@ -22,7 +22,8 @@
   </Application.Styles>
 
   <Application.Resources>
-    <SolidColorBrush x:Key="MaterialPrimaryLightBrush" Color="#80deea"></SolidColorBrush>
+    <SolidColorBrush x:Key="MaterialPrimaryLightBrush" Color="#80deea"/>
+    <SolidColorBrush x:Key="CardBackGroundBrush" Color="#80deea"/>
   </Application.Resources>
   
   <NativeMenu.Menu>

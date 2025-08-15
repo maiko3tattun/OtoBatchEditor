@@ -1,4 +1,5 @@
-﻿using ReactiveUI;
+﻿using OtoBatchEditor.Views;
+using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.Generic;
@@ -87,13 +88,19 @@ namespace OtoBatchEditor.ViewModels
                 return;
             }
 
-            else if (Each)
+            MainWindow.SetProgressIcon(true);
+            if (Each)
             {
                 await Edit(async otoIni =>
                 {
                     try
                     {
                         var groups = GetDupliGroups(otoIni);
+                        if (groups.Count == 0)
+                        {
+                            await MainWindowViewModel.MessageDialogOpen($"{otoIni.FilePath} に重複エイリアスはありませんでした");
+                            return false;
+                        }
                         ProcessGroup(groups, leave, otoIni.OtoList);
 
                         // 確認を出す
@@ -120,9 +127,16 @@ namespace OtoBatchEditor.ViewModels
                     var inis = await TryGetInis();
                     if (inis == null)
                     {
+                        MainWindow.SetProgressIcon(false);
                         return;
                     }
                     var groups = GetDupliGroups(inis);
+                    if (groups.Count == 0)
+                    {
+                        MainWindow.SetProgressIcon(false);
+                        await MainWindowViewModel.MessageDialogOpen($"重複エイリアスはありませんでした");
+                        return;
+                    }
                     ProcessGroup(groups, leave, inis.SelectMany(ini => ini.OtoList));
 
                     // 確認を出す
@@ -130,6 +144,7 @@ namespace OtoBatchEditor.ViewModels
                     await MainWindowViewModel.DialogOpen(content);
                     if (content.Cancel)
                     {
+                        MainWindow.SetProgressIcon(false);
                         return;
                     }
 
@@ -149,10 +164,12 @@ namespace OtoBatchEditor.ViewModels
                 catch (Exception e)
                 {
                     DebagMode.AddError(e);
+                    MainWindow.SetProgressIcon(false);
                     await MainWindowViewModel.MessageDialogOpen($"予期せぬエラーが発生しました\n{e.Message}");
                     return;
                 }
             }
+            MainWindow.SetProgressIcon(false);
         }
 
         public async void RemoveNum()
@@ -328,7 +345,11 @@ namespace OtoBatchEditor.ViewModels
         public DuplicateItemGroup(IGrouping<string, DuplicateItem> group)
         {
             Key = group.Key;
-            Items = group.OrderBy(item => item.Score).ThenBy(item => item.DirectoryPath).ToList();
+            Items = group.OrderBy(item => item.Score)
+                .ThenBy(item => item.DirectoryPath)
+                .ThenBy(item => item.Oto.FileName)
+                .ThenBy(item => item.Oto.Offset)
+                .ToList();
         }
     }
 }

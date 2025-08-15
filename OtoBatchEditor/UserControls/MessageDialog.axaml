@@ -6,7 +6,7 @@
              x:Class="OtoBatchEditor.MessageDialog"
              xmlns:dialogHostAvalonia="clr-namespace:DialogHostAvalonia;assembly=DialogHost.Avalonia">
   <StackPanel Margin="20,10">
-    <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="500" >
+    <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="500">
       <TextBlock x:Name="textBlock" Margin="10" />
     </ScrollViewer>
 

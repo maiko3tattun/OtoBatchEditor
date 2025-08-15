@@ -9,12 +9,12 @@
              x:DataType="vm:PresetTipViewModel"
              xmlns:styles="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
              xmlns:assists="clr-namespace:Material.Styles.Assists;assembly=Material.Styles"
-             Background="Transparent" ClipToBounds="False">
-  <DropDownButton Content="プリセット" Name="button"
-                  assists:ShadowAssist.ShadowDepth="0" Classes="light" VerticalAlignment="Center" HorizontalAlignment="Right">
+             ClipToBounds="False">
+  <DropDownButton Content="プリセット" Name="button" Background="{DynamicResource CardBackGroundBrush}" Foreground="{DynamicResource MaterialBodyBrush}"
+                  assists:ShadowAssist.ShadowDepth="0" VerticalAlignment="Center" HorizontalAlignment="Right">
     <DropDownButton.Flyout>
       <Flyout>
-        <ItemsControl ItemsSource="{Binding PresetList}" Background="Transparent">
+        <ItemsControl ItemsSource="{Binding PresetList}">
           <ItemsControl.DataTemplates>
             <DataTemplate DataType="vm:PresetItemViewModel">
               <Button Content="{Binding DisplayName}" Command="{Binding Command}"

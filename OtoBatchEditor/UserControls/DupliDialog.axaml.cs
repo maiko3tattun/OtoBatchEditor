@@ -5,7 +5,6 @@ using Avalonia.Interactivity;
 using DialogHostAvalonia;
 using OtoBatchEditor.ViewModels;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace OtoBatchEditor;
 
@@ -21,7 +20,7 @@ public partial class DupliDialog : UserControl
     public DupliDialog(List<DuplicateItemGroup> groups)
     {
         InitializeComponent();
-        DataContext = new DupliDialogViewModel(new ObservableCollection<DuplicateItemGroup>(groups));
+        DataContext = new DupliDialogViewModel(groups);
     }
 
     private void OKClick(object? sender, RoutedEventArgs e)
@@ -65,9 +64,9 @@ public partial class DupliDialog : UserControl
 
 public class DupliDialogViewModel : ViewModelBase
 {
-    public ObservableCollection<DuplicateItemGroup> Groups { get; set; }
+    public List<DuplicateItemGroup> Groups { get; }
 
-    public DupliDialogViewModel(ObservableCollection<DuplicateItemGroup> groups)
+    public DupliDialogViewModel(List<DuplicateItemGroup> groups)
     {
         Groups = groups;
     }

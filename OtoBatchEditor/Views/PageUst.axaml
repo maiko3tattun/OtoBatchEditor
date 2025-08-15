@@ -29,7 +29,7 @@
 
         <local:SubTitle Icon="CheckBold" Text="保存場所の指定"/>
         <StackPanel Margin="20,0,20,10">
-          <styles:Card Margin="10" Height="80" Background="{DynamicResource MaterialPrimaryLightBrush}"
+          <styles:Card Margin="10" Height="80" Background="{DynamicResource CardBackGroundBrush}"
                                DragDrop.AllowDrop="True" DragDrop.Drop="OnDrop">
             <TextBlock FontSize="16" FontWeight="SemiBold" TextAlignment="Center" VerticalAlignment="Center"
                        Text="フォルダをドラッグ＆ドロップ"/>

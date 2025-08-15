@@ -84,7 +84,6 @@
     </Style>
   </Style>
 
-
   <Style Selector="styles|Card">
     <Setter Property="CornerRadius" Value="6"/>
   </Style>
