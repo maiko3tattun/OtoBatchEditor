@@ -25,7 +25,7 @@
     <!-- 右 -->
     <styles:Card Grid.Column="1" Margin="5" Padding="0">
       <styles:SnackbarHost HostName="MainWindowSnackbar">
-        <styles:NavigationDrawer RightDrawerOpened="{Binding IsRightDrawerOpen, Mode=TwoWay}" RightDrawerWidth="220">
+        <styles:NavigationDrawer RightDrawerOpened="{Binding IsRightDrawerOpen, Mode=TwoWay}" RightDrawerWidth="220" LeftDrawerOpened="{Binding LeftDrawerForceClose, Mode=TwoWay}">
           <styles:NavigationDrawer.RightDrawerContent>
             <ScrollViewer>
               <StackPanel VerticalAlignment="Stretch">

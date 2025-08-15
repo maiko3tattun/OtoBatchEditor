@@ -41,6 +41,7 @@ namespace OtoBatchEditor.ViewModels
             "その他：エラーチェック",
             "その他：原音設定チェック用ustを作成"
         ];
+        [Reactive] public bool LeftDrawerForceClose { get; set; } = false;
 
         public MainWindowViewModel()
         {
@@ -49,6 +50,11 @@ namespace OtoBatchEditor.ViewModels
                 {
                     this.RaisePropertyChanged(nameof(PageIndex));
                     IsRightDrawerOpen = false;
+                });
+            this.WhenAnyValue(x => x.LeftDrawerForceClose)
+                .Subscribe(x =>
+                {
+                    LeftDrawerForceClose = false;
                 });
 
             // 初回起動時、プリセットをコピー
