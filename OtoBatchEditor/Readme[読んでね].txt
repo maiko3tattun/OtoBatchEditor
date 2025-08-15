@@ -22,11 +22,12 @@ https://github.com/maiko3tattun/OtoBatchEditor
 ・再配布は禁止です。
 ・本ソフトを利用して発生した問題については一切責任を負いかねますのでご了承下さい。
 ・うまく動かない、バグを見つけた場合等は、できるだけご連絡ください。
-　バグ報告ガイドライン：https://ameblo.jp/maiko3utau/entry-12822371321.html
 
 
 【連絡先】
 まいこ
+バグ報告ガイドライン: https://ameblo.jp/maiko3utau/entry-12822371321.html
+
 Twitter: https://twitter.com/maiko3tattun
 HP: https://maiko3tattun.wixsite.com/mysite
 mail: maikotattun@yahoo.co.jp
