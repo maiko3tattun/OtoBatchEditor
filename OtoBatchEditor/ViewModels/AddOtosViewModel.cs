@@ -1,10 +1,8 @@
 ﻿using DynamicData.Binding;
-using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using YamlDotNet.Serialization;
 

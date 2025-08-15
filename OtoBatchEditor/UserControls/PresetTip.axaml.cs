@@ -21,9 +21,8 @@ public partial class PresetTip : UserControl
     }
 
     private static DropDownButton? menuButton;
-    public static async Task MenuClose()
+    public static void MenuClose()
     {
-        await Task.Delay(100);
         menuButton?.Flyout?.Hide(); // Todo なんで動かない？？
     }
 }
@@ -48,7 +47,7 @@ public class PresetTipViewModel : ViewModelBase
         PresetList.Add(new Separator());
         PresetList.Add(new PresetItemViewModel("保存", ReactiveCommand.Create(async () =>
         {
-            await PresetTip.MenuClose();
+            PresetTip.MenuClose();
             var content = new InputDialog("名前：", "キャンセル");
             await MainWindowViewModel.DialogOpen(content);
             if (content.Execute)

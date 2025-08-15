@@ -22,6 +22,5 @@
 
   <Application.Resources>
     <SolidColorBrush x:Key="MaterialPrimaryLightBrush" Color="#80deea"></SolidColorBrush>
-    <FontFamily x:Key="NotoSans">avares://OtoBatchEditor/Assets/NotoSans-Regular.ttf#Noto Sans</FontFamily>
   </Application.Resources>
 </Application>

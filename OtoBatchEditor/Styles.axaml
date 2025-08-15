@@ -8,24 +8,29 @@
         xmlns:dataGrid="clr-namespace:Material.Avalonia.DataGrid;assembly=Material.Avalonia.DataGrid">
   <Design.PreviewWith>
     <Border Padding="0">
-      <StackPanel Orientation="Horizontal">
+      <StackPanel Orientation="Horizontal" Margin="10">
         <TextBlock Text="a" VerticalAlignment="Center"/>
         <TextBox Text="" Watermark="ほげほ" Width="50" Margin="0"/>
-        <TextBox Text="" Watermark="h" Width="50" Margin="0"/>
-        <TextBox Text="" Watermark="30" Width="50" Margin="0"/>
+        <TextBox Text="a" Watermark="" Width="50" Margin="0"/>
+        <TextBox Text="" Width="50" Margin="0"/>
         <CheckBox Content="チェックボックス" IsChecked="True" Margin="10,0,0,0"/>
       </StackPanel>
     </Border>
   </Design.PreviewWith>
   
+  <Style>
+    <Style.Resources>
+      <FontFamily x:Key="fontfamily">Meiryo UI,Hiragino Sans,Segoe UI,San Francisco,Helvetica Neue</FontFamily>
+    </Style.Resources>
+  </Style>
+  
   <Style Selector="Window">
-    <Setter Property="FontFamily" Value="{DynamicResource NotoSans}"/>
+    <Setter Property="FontFamily" Value="{DynamicResource fontfamily}"/>
   </Style>
 
   <Style Selector="TextBlock">
     <Setter Property="TextWrapping" Value="Wrap"/>
     <Setter Property="FontSize" Value="14"/>
-    <Setter Property="LineHeight" Value="16"/>
   </Style>
 
   <Style Selector="TextBlock.header">
@@ -100,11 +105,11 @@
   
   <Style Selector="TextBox">
     <Setter Property="VerticalAlignment" Value="Center"/>
-    <Setter Property="Height" Value="34"/>
     <Setter Property="TextAlignment" Value="Center"/>
     
     <Style Selector="^ /template/ Panel#PART_TextFieldPanel">
-      <Setter Property="MinHeight" Value="18" />
+      <Setter Property="MinHeight" Value="20" />
+      <Setter Property="Height" Value="32" />
       <Setter Property="Margin" Value="1,3,1,2" />
     </Style>
       
@@ -113,6 +118,10 @@
     </Style>
   </Style>
 
+  <Style Selector="Button">
+    <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+  
   <Style Selector="Button.Ok">
     <Setter Property="Content" Value="実行"/>
     <Setter Property="Width" Value="100"/>
