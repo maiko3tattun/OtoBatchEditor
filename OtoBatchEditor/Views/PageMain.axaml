@@ -13,8 +13,10 @@
       <TextBlock Text="メニューを選択" Classes="header"/>
     </styles:ColorZone>
 
-    <StackPanel Classes="content">
-      <ListBox ItemsSource="{Binding RightPages}" SelectedIndex="{Binding DrawerSelectedIndex}"/>
-    </StackPanel>
+    <ScrollViewer>
+      <StackPanel Classes="content">
+        <ListBox ItemsSource="{Binding RightPages}" SelectedIndex="{Binding DrawerSelectedIndex}"/>
+      </StackPanel>
+    </ScrollViewer>
   </DockPanel>
 </UserControl>

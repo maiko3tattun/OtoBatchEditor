@@ -7,7 +7,7 @@ namespace OtoBatchEditor.Views
 {
     public partial class MainWindow : Window
     {
-        private static MainWindow instance;
+        private static MainWindow? instance;
         public MainWindow()
         {
             InitializeComponent();
@@ -16,7 +16,7 @@ namespace OtoBatchEditor.Views
 
         public static void SetProgressIcon(bool visible)
         {
-            instance.ProgressIcon.IsVisible = visible;
+            instance!.ProgressIcon.IsVisible = visible;
         }
 
         private void WhenClosing(object? sender, WindowClosingEventArgs e)

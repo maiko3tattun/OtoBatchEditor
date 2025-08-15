@@ -5,7 +5,7 @@ using System.IO;
 
 namespace OtoBatchEditor
 {
-    public class Wav// : IEquatable<Wav>
+    public class Wav
     {
         public string FilePath { get; set; } = string.Empty;
         public string FileName { get; set; } = string.Empty;
@@ -48,12 +48,5 @@ namespace OtoBatchEditor
                 return false;
             }
         }
-
-        //public bool Equals(Wav? other)
-        //{
-        //    if (other is null) return false;
-        //    if (ReferenceEquals(this, other)) return true;
-        //    return string.Equals(FilePath, other.FilePath);
-        //}
     }
 }

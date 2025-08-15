@@ -10,7 +10,7 @@ namespace OtoBatchEditor
 {
     public static class DebagMode
     {
-        private static string ProcessName => Path.GetFileNameWithoutExtension(Environment.ProcessPath);
+        private static string ProcessName => Path.GetFileNameWithoutExtension(Environment.ProcessPath)!;
         private static string DirectoryPath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Maiko", ProcessName, "Logs");
         public static List<string> Log { get; private set; } = new List<string>();
         public static bool DebagModeIsEnable { get; private set; } = false;
