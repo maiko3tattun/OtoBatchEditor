@@ -42,13 +42,19 @@ Assetsを開き、Windowsならだいたい`win-x64`、Windows Armなら`win-arm
 
 ## 作者
 まいこ  
-バグ報告ガイドライン：https://ameblo.jp/maiko3utau/entry-12822371321.html
+バグ報告ガイドライン: https://ameblo.jp/maiko3utau/entry-12822371321.html
+バグ報告用サーバー: https://discord.gg/jU2eeBhvsp
 
 Twitter: https://twitter.com/maiko3tattun  
 HP: https://maiko3tattun.wixsite.com/mysite  
 mail: maikotattun@yahoo.co.jp  
 
 ## 更新履歴（ver2.0以降）
+2025/08/17 v1.99-beta3
+- 重複削除ダイアログでスクロールバーが出ない不具合を修正
+- ダークテーマに対応
+- ウィンドウを最大化すると謎のスペースがうまれる不具合を修正
+
 2025/08/15 v1.99-beta2
 - macOS対応
 - "先行発声とオーバーラップを調整"を追加
