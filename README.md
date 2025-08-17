@@ -42,7 +42,7 @@ Assetsを開き、Windowsならだいたい`win-x64`、Windows Armなら`win-arm
 
 ## 作者
 まいこ  
-バグ報告ガイドライン: https://ameblo.jp/maiko3utau/entry-12822371321.html
+バグ報告ガイドライン: https://ameblo.jp/maiko3utau/entry-12822371321.html  
 バグ報告用サーバー: https://discord.gg/jU2eeBhvsp
 
 Twitter: https://twitter.com/maiko3tattun  
