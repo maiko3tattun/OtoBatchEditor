@@ -12,6 +12,7 @@
         xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
         Icon="/Assets/avalonia-logo.ico"
         Title="oto.iniまとめて改造ましーん"
+        WindowStartupLocation="CenterScreen"
         Closing="WhenClosing" KeyDown="MainWindowsKeyDown">
     <Design.DataContext>
         <vm:MainWindowViewModel/>
@@ -24,7 +25,7 @@
     <!-- 右 -->
     <styles:Card Grid.Column="1" Margin="5" Padding="0">
       <styles:SnackbarHost HostName="MainWindowSnackbar">
-        <styles:NavigationDrawer RightDrawerOpened="{Binding IsRightDrawerOpen, Mode=TwoWay}" RightDrawerWidth="220">
+        <styles:NavigationDrawer RightDrawerOpened="{Binding IsRightDrawerOpen, Mode=TwoWay}" RightDrawerWidth="220" LeftDrawerOpened="{Binding LeftDrawerForceClose, Mode=TwoWay}">
           <styles:NavigationDrawer.RightDrawerContent>
             <ScrollViewer>
               <StackPanel VerticalAlignment="Stretch">

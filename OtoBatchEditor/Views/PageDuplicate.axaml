@@ -51,7 +51,8 @@
           <Button Content="重複エイリアスを選択して削除" Command="{Binding Remove}" HorizontalAlignment="Left" />
           <TextBlock Margin="5,10" >
             <Run Text="エイリアスが重複した行（完全一致）を、どれを残すか選んで削除します。" /><LineBreak/>
-            <Run Text="エイリアスの優先順位を自動判別して、残すべきものはデフォルトで選択されます。" />
+            <Run Text="エイリアスの優先順位を自動判別して、残すべきものはデフォルトで選択されます。" /><LineBreak/>
+            <Run Text="（重複するものが多いとUIが重くなります）" />
           </TextBlock>
         </StackPanel>
         
