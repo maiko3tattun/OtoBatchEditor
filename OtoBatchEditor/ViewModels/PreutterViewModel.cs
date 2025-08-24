@@ -95,11 +95,24 @@ namespace OtoBatchEditor.ViewModels
                         {
                             if (PreFix)
                             {
+                                double diff;
+                                diff = preDouble - oto.Pre;
+
+                                oto.Offset -= diff;
                                 oto.Pre = preDouble;
+                                oto.Ovl += diff;
+                                oto.Consonant += diff;
+                                oto.Blank -= diff;
                             }
                             else
                             {
+                                oto.Offset -= preDouble;
                                 oto.Pre += preDouble;
+                                oto.Consonant += preDouble;
+                                oto.Blank -= preDouble;
+
+                                double diff = preDouble / oto.Pre;
+                                oto.Ovl += oto.Ovl * diff;
                             }
                         }
                         if (Overlap)
