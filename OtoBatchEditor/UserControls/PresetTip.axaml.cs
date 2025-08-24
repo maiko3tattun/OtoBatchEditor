@@ -71,7 +71,7 @@ public class PresetTipViewModel : ViewModelBase
                 }
                 catch (Exception e)
                 {
-                    DebagMode.AddError(e);
+                    DebugMode.AddError(e);
                     MainWindowViewModel.ShowSnackbar("プリセットの保存に失敗しました");
                 }
             }
@@ -99,7 +99,7 @@ public class PresetTipViewModel : ViewModelBase
             }
             catch (Exception e)
             {
-                DebagMode.AddError(e);
+                DebugMode.AddError(e);
                 MainWindowViewModel.ShowSnackbar("フォルダを開けませんでした");
             }
             PresetTip.MenuClose();
@@ -129,7 +129,7 @@ public class PresetItemViewModel : ViewModelBase
             }
             catch (Exception e)
             {
-                DebagMode.AddError(e);
+                DebugMode.AddError(e);
                 MainWindowViewModel.ShowSnackbar("プリセットの読み込みに失敗しました");
             }
             PresetTip.MenuClose();

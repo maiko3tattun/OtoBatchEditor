@@ -81,7 +81,7 @@ namespace OtoBatchEditor.ViewModels
             }
             catch (Exception ex)
             {
-                DebagMode.AddError(ex);
+                DebugMode.AddError(ex);
             }
 
             var resources = Application.Current?.Resources;

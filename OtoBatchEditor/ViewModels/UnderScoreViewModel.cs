@@ -39,7 +39,7 @@ namespace OtoBatchEditor.ViewModels
                             }
                             catch (Exception e)
                             {
-                                DebagMode.AddError(e);
+                                DebugMode.AddError(e);
                                 errors.Add(Path.GetFileName(file));
                             }
                         }

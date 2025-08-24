@@ -111,14 +111,14 @@ namespace OtoBatchEditor.ViewModels
             catch (Exception e)
             {
                 MainWindow.SetProgressIcon(false);
-                DebagMode.AddError(e);
+                DebugMode.AddError(e);
                 await MainWindowViewModel.MessageDialogOpen(e.Message);
-                await DebagMode.Export(LogOutputType.Error);
+                await DebugMode.Export(LogOutputType.Error);
                 return;
 
             }
             MainWindow.SetProgressIcon(false);
-            await DebagMode.Export(LogOutputType.Completed);
+            await DebugMode.Export(LogOutputType.Completed);
         }
     }
 

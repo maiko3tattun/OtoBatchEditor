@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace OtoBatchEditor
 {
-    public static class DebagMode
+    public static class DebugMode
     {
         private static string ProcessName => Path.GetFileNameWithoutExtension(Environment.ProcessPath)!;
         private static string DirectoryPath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Maiko", ProcessName, "Logs");
         public static List<string> Log { get; private set; } = new List<string>();
-        public static bool DebagModeIsEnable { get; private set; } = false;
+        public static bool DebugModeIsEnable { get; private set; } = false;
 
         /// <summary>
         /// デバッグモードオンオフ
         /// </summary>
         public static void ToggleLogExport()
         {
-            DebagModeIsEnable = !DebagModeIsEnable;
+            DebugModeIsEnable = !DebugModeIsEnable;
         }
 
         public static void AddError(Exception e)
@@ -64,7 +64,7 @@ namespace OtoBatchEditor
 
         public static async Task Export(LogOutputType type)
         {
-            if (!DebagModeIsEnable && type != LogOutputType.Manual)
+            if (!DebugModeIsEnable && type != LogOutputType.Manual)
             {
                 return;
             }
@@ -86,7 +86,7 @@ namespace OtoBatchEditor
         private static async Task Write()
         {
             DateTime dt = DateTime.Now;
-            string filename = $"debag_{ProcessName}_{dt.ToString("yyyyMMdd_HHmmss")}.txt";
+            string filename = $"Debug_{ProcessName}_{dt.ToString("yyyyMMdd_HHmmss")}.txt";
             string filePath = Path.Combine(DirectoryPath, filename);
 
             try

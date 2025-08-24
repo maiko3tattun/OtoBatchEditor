@@ -51,7 +51,7 @@ namespace OtoBatchEditor.ViewModels
                     }
                     catch (Exception e)
                     {
-                        DebagMode.AddError(e);
+                        DebugMode.AddError(e);
                         var result = await MainWindowViewModel.MessageDialogOpen(e.Message, "スキップ", "中止");
                         if (result)
                         {
@@ -65,21 +65,21 @@ namespace OtoBatchEditor.ViewModels
             {
                 MainWindow.SetProgressIcon(false);
                 await MainWindowViewModel.MessageDialogOpen(e.Message);
-                await DebagMode.Export(LogOutputType.Error);
+                await DebugMode.Export(LogOutputType.Error);
                 return;
             }
             catch (Exception e)
             {
                 MainWindow.SetProgressIcon(false);
-                DebagMode.AddError(e);
+                DebugMode.AddError(e);
                 await MainWindowViewModel.MessageDialogOpen(e.Message);
-                await DebagMode.Export(LogOutputType.Error);
+                await DebugMode.Export(LogOutputType.Error);
                 return;
             }
 
             MainWindow.SetProgressIcon(false);
             await WhenCompleted();
-            await DebagMode.Export(LogOutputType.Completed);
+            await DebugMode.Export(LogOutputType.Completed);
         }
 
         public async Task WhenCompleted()
@@ -141,7 +141,7 @@ namespace OtoBatchEditor.ViewModels
                     }
                     catch (Exception e)
                     {
-                        DebagMode.AddError(e);
+                        DebugMode.AddError(e);
                         var result = await MainWindowViewModel.MessageDialogOpen(e.Message, "スキップ", "中止");
                         if (result)
                         {
@@ -159,19 +159,19 @@ namespace OtoBatchEditor.ViewModels
             {
                 await MainWindowViewModel.MessageDialogOpen(e.Message);
                 MainWindow.SetProgressIcon(false);
-                await DebagMode.Export(LogOutputType.Error);
+                await DebugMode.Export(LogOutputType.Error);
                 return;
             }
             catch (Exception e)
             {
-                DebagMode.AddError(e);
+                DebugMode.AddError(e);
                 await MainWindowViewModel.MessageDialogOpen(e.Message);
                 MainWindow.SetProgressIcon(false);
-                await DebagMode.Export(LogOutputType.Error);
+                await DebugMode.Export(LogOutputType.Error);
                 return;
             }
             MainWindow.SetProgressIcon(false);
-            await DebagMode.Export(LogOutputType.Completed);
+            await DebugMode.Export(LogOutputType.Completed);
         }
 
         public async Task<OtoIni[]?> TryGetInis(bool ignoreErrors = false)
@@ -200,7 +200,7 @@ namespace OtoBatchEditor.ViewModels
             }
             catch (Exception e)
             {
-                DebagMode.AddError(e);
+                DebugMode.AddError(e);
                 await MainWindowViewModel.MessageDialogOpen(e.Message);
                 return null;
             }

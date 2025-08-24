@@ -53,12 +53,12 @@ namespace OtoBatchEditor.ViewModels
             }
             catch (Exception e)
             {
-                DebagMode.AddError(e);
+                DebugMode.AddError(e);
                 await MainWindowViewModel.MessageDialogOpen(e.Message);
-                await DebagMode.Export(LogOutputType.Error);
+                await DebugMode.Export(LogOutputType.Error);
             }
             MainWindowViewModel.ShowSnackbar("完了！");
-            await DebagMode.Export(LogOutputType.Completed);
+            await DebugMode.Export(LogOutputType.Completed);
         }
     }
 }

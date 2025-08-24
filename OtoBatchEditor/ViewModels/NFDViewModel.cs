@@ -38,7 +38,7 @@ namespace OtoBatchEditor.ViewModels
                         }
                         catch (Exception e)
                         {
-                            DebagMode.AddError(e);
+                            DebugMode.AddError(e);
                             errors.Add(Path.GetFileName(wavPath));
                         }
                         otoIni.OtoList.ForEach(oto =>
@@ -65,7 +65,7 @@ namespace OtoBatchEditor.ViewModels
                             }
                             catch (Exception e)
                             {
-                                DebagMode.AddError(e);
+                                DebugMode.AddError(e);
                                 errors.Add(Path.GetFileName(wav));
                             }
                         }

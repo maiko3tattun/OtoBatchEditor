@@ -27,7 +27,7 @@ namespace OtoBatchEditor.Views
             }
             catch (Exception ex)
             {
-                DebagMode.AddError(ex);
+                DebugMode.AddError(ex);
 #if DEBUG
                 MainWindowViewModel.ShowSnackbar("前回値の保存に失敗しました");
                 e.Cancel = true;
@@ -39,8 +39,8 @@ namespace OtoBatchEditor.Views
         {
             if (e.KeyModifiers == (KeyModifiers.Control | KeyModifiers.Alt) && e.Key == Key.D)
             {
-                DebagMode.ToggleLogExport();
-                if (DebagMode.DebagModeIsEnable)
+                DebugMode.ToggleLogExport();
+                if (DebugMode.DebugModeIsEnable)
                 {
                     MainWindowViewModel.ShowSnackbar("実行後、不具合報告用のログファイルを出力します");
                 }
@@ -55,7 +55,7 @@ namespace OtoBatchEditor.Views
                 var result = await MainWindowViewModel.MessageDialogOpen("不具合報告用のログファイルを出力します。\nこのモードはエラーが起きたあとに起動してください。", "キャンセル");
                 if (result)
                 {
-                    await DebagMode.Export(LogOutputType.Manual);
+                    await DebugMode.Export(LogOutputType.Manual);
                 }
                 e.Handled = true;
             }

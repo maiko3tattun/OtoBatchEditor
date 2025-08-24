@@ -146,7 +146,7 @@ namespace OtoBatchEditor.ViewModels
             }
             catch (Exception e)
             {
-                DebagMode.AddError(e);
+                DebugMode.AddError(e);
                 await MainWindowViewModel.MessageDialogOpen(e.Message);
                 return;
             }

@@ -43,7 +43,7 @@ namespace OtoBatchEditor
             }
             catch (Exception e)
             {
-                DebagMode.AddError(e);
+                DebugMode.AddError(e);
                 Errors.Add($"ファイルの読み込みに失敗しました：{e.Message}");
                 return false;
             }

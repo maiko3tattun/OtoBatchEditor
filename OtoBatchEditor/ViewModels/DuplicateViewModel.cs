@@ -72,11 +72,11 @@ namespace OtoBatchEditor.ViewModels
             }
             catch (Exception e)
             {
-                DebagMode.AddError(e);
+                DebugMode.AddError(e);
                 await MainWindowViewModel.MessageDialogOpen($"予期せぬエラーが発生しました\n{e.Message}");
-                await DebagMode.Export(LogOutputType.Error);
+                await DebugMode.Export(LogOutputType.Error);
             }
-            await DebagMode.Export(LogOutputType.Completed);
+            await DebugMode.Export(LogOutputType.Completed);
         }
 
         public async void Remove()
@@ -163,7 +163,7 @@ namespace OtoBatchEditor.ViewModels
                 }
                 catch (Exception e)
                 {
-                    DebagMode.AddError(e);
+                    DebugMode.AddError(e);
                     MainWindow.SetProgressIcon(false);
                     await MainWindowViewModel.MessageDialogOpen($"予期せぬエラーが発生しました\n{e.Message}");
                     return;
