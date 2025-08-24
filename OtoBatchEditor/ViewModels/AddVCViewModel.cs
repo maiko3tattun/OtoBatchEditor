@@ -106,10 +106,11 @@ namespace OtoBatchEditor.ViewModels
                                         {
                                             var newOto = oto.Clone();
                                             newOto.Alias = alias;
-                                            newOto.Pre = oto.Pre - item.Length;
+                                            newOto.Offset = oto.Offset - (item.Length / 2);
+                                            newOto.Pre = oto.Pre - (item.Length / 2);
                                             newOto.Ovl = newOto.Pre / 3;
                                             newOto.Consonant = newOto.Pre + 20;
-                                            newOto.Blank = -(oto.Pre + (item.IsPlosive ? 30 : item.Length - 10));
+                                            newOto.Blank = -(newOto.Pre + (item.IsPlosive ? 40 : item.Length - 10));
 
                                             newOtos.Add(newOto);
                                             return true;
