@@ -418,6 +418,6 @@ ReplaceItems:
   Before: n(?! )
   After: ん
 IsRegex: true
-NoConvertSuffix: false
+NoConvertSuffix: true
 TestText: a kya_C4
 TestSuffix: _C4

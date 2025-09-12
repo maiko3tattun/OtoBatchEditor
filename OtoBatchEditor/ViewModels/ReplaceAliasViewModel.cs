@@ -67,31 +67,10 @@ namespace OtoBatchEditor.ViewModels
                         {
                             if (item.IsChecked && !string.IsNullOrEmpty(item.Before))
                             {
-                                int count = item.Before.Count(c => c == '(');
-                                Regex regex = new Regex(item.Before.Replace("[Suffix]", $"({otoIni.Suffix})"));
-                                string after = item.After.Replace("[Suffix]", $"(${count + 1})");
-
+                                GetRegexVariables(item, otoIni.Suffix, out Regex regex, out string after);
                                 otoIni.OtoList.ForEach(oto =>
                                 {
-                                    if (NoConvertSuffix)
-                                    {
-                                        if (item.Before.Contains("[Suffix]"))
-                                        {
-                                            oto.Alias = regex.Replace(oto.Alias, after);
-                                            oto.Alias = oto.Alias.Replace($"({otoIni.Suffix})", otoIni.Suffix);
-                                        }
-                                        else
-                                        {
-                                            oto.Alias = oto.Alias.Replace(otoIni.Suffix, "");
-                                            oto.Alias = regex.Replace(oto.Alias, after);
-                                            oto.Alias += otoIni.Suffix;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        oto.Alias = regex.Replace(oto.Alias, after);
-                                        oto.Alias = oto.Alias.Replace($"({otoIni.Suffix})", otoIni.Suffix);
-                                    }
+                                    oto.Alias = ConvertRegex(oto.Alias, item.Before, otoIni.Suffix, regex, after);
                                 });
                             }
                         }
@@ -102,28 +81,10 @@ namespace OtoBatchEditor.ViewModels
                         {
                             if (item.IsChecked && !string.IsNullOrEmpty(item.Before))
                             {
-                                string before = item.Before.Replace("[Suffix]", otoIni.Suffix);
-                                string after = item.After.Replace("[Suffix]", otoIni.Suffix);
-
+                                GetVariables(item, otoIni.Suffix, out string before, out string after);
                                 otoIni.OtoList.ForEach(oto =>
                                 {
-                                    if (NoConvertSuffix)
-                                    {
-                                        if (item.Before.Contains("[Suffix]"))
-                                        {
-                                            oto.Alias = oto.Alias.Replace(before, after);
-                                        }
-                                        else
-                                        {
-                                            oto.Alias = oto.Alias.Replace(otoIni.Suffix, "");
-                                            oto.Alias = oto.Alias.Replace(before, after);
-                                            oto.Alias += otoIni.Suffix;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        oto.Alias = oto.Alias.Replace(before, after);
-                                    }
+                                    oto.Alias = ConvertString(oto.Alias, before, after, otoIni.Suffix);
                                 });
                             }
                         }
@@ -135,31 +96,6 @@ namespace OtoBatchEditor.ViewModels
                 }
                 return Task.FromResult(true);
             });
-        }
-
-        public async Task CopyToClipboard()
-        {
-            try
-            {
-                await MainWindowViewModel.GetClipboard().SetTextAsync("[Suffix]");
-                MainWindowViewModel.ShowSnackbar("クリップボードにコピーしました");
-            }
-            catch (Exception e)
-            {
-                DebugMode.AddError(e);
-                await MainWindowViewModel.MessageDialogOpen(e.Message);
-                return;
-            }
-        }
-
-        public void AddRow()
-        {
-            ReplaceItems.Add(new ReplaceItem());
-        }
-
-        public void DeleteRow(ReplaceItem item)
-        {
-            ReplaceItems.Remove(item);
         }
 
         public void ReplaceTest()
@@ -193,29 +129,8 @@ namespace OtoBatchEditor.ViewModels
                     {
                         if (item.IsChecked && !string.IsNullOrEmpty(item.Before))
                         {
-                            int count = item.Before.Count(c => c == '(');
-                            Regex regex = new Regex(item.Before.Replace("[Suffix]", $"({TestSuffix})"));
-                            string after = item.After.Replace("[Suffix]", $"(${count + 1})");
-
-                            if (NoConvertSuffix)
-                            {
-                                if (item.Before.Contains("[Suffix]"))
-                                {
-                                    text = regex.Replace(text, after);
-                                    text = text.Replace($"({TestSuffix})", TestSuffix);
-                                }
-                                else
-                                {
-                                    text = text.Replace(TestSuffix, "");
-                                    text = regex.Replace(text, after);
-                                    text += TestSuffix;
-                                }
-                            }
-                            else
-                            {
-                                text = regex.Replace(text, after);
-                                text = text.Replace($"({TestSuffix})", TestSuffix);
-                            }
+                            GetRegexVariables(item, TestSuffix, out Regex regex, out string after);
+                            text = ConvertRegex(text, item.Before, TestSuffix, regex, after);
                         }
                     }
                 }
@@ -225,26 +140,8 @@ namespace OtoBatchEditor.ViewModels
                     {
                         if (item.IsChecked && !string.IsNullOrEmpty(item.Before))
                         {
-                            string before = item.Before.Replace("[Suffix]", TestSuffix);
-                            string after = item.After.Replace("[Suffix]", TestSuffix);
-
-                            if (NoConvertSuffix)
-                            {
-                                if (item.Before.Contains("[Suffix]"))
-                                {
-                                    text = text.Replace(before, after);
-                                }
-                                else
-                                {
-                                    text = text.Replace(TestSuffix, "");
-                                    text = text.Replace(before, after);
-                                    text += TestSuffix;
-                                }
-                            }
-                            else
-                            {
-                                text = text.Replace(before, after);
-                            }
+                            GetVariables(item, TestSuffix, out string before, out string after);
+                            text = ConvertString(text, before, after, TestSuffix);
                         }
                     }
                 }
@@ -254,9 +151,135 @@ namespace OtoBatchEditor.ViewModels
                 TestResult = "変換に失敗しました";
                 return;
             }
-            
             TestResult = text;
         }
+
+        #region Convert
+        private void GetRegexVariables(ReplaceItem item, string suffix, out Regex regex, out string after)
+        {
+            int count = item.Before.Count(c => c == '(');
+            regex = new Regex(item.Before.Replace("[Suffix]", $"({suffix})"));
+            after = item.After.Replace("[Suffix]", $"(${count + 1})");
+        }
+
+        private string ConvertRegex(string input, string before, string suffix, Regex regex, string after)
+        {
+            if (NoConvertSuffix)
+            {
+                if (before.Contains("[Suffix]"))
+                {
+                    input = ReplaceWithCase(input, regex, after);
+                    input = input.Replace($"({suffix})", suffix);
+                }
+                else
+                {
+                    if (input.EndsWith(suffix))
+                    {
+                        input = input.Replace(suffix, "");
+                        input = ReplaceWithCase(input, regex, after);
+                        input += suffix;
+                    }
+                    else
+                    {
+                        input = ReplaceWithCase(input, regex, after);
+                    }
+                }
+            }
+            else
+            {
+                input = ReplaceWithCase(input, regex, after);
+                input = input.Replace($"({suffix})", suffix);
+            }
+            return input;
+        }
+
+        // after内の\u,\l等に対応
+        private string ReplaceWithCase(string input, Regex regex, string after)
+        {
+            return regex.Replace(input, match =>
+            {
+                return Regex.Replace(after, @"(\\[uUlL])?\$(\d+)", m =>
+                {
+                    string directive = m.Groups[1].Value;
+                    int groupIndex = int.Parse(m.Groups[2].Value);
+                    if (groupIndex >= match.Groups.Count) return "";
+                    string value = match.Groups[groupIndex].Value;
+
+                    return directive switch
+                    {
+                        @"\U" => value.ToUpper(),
+                        @"\u" => value.Length > 0 ? char.ToUpper(value[0]) + value.Substring(1) : value,
+                        @"\L" => value.ToLower(),
+                        @"\l" => value.Length > 0 ? char.ToLower(value[0]) + value.Substring(1) : value,
+                        _ => value
+                    };
+                });
+            });
+        }
+
+        private void GetVariables(ReplaceItem item, string suffix, out string before, out string after)
+        {
+            before = item.Before.Replace("[Suffix]", suffix);
+            after = item.After.Replace("[Suffix]", suffix);
+        }
+
+        private string ConvertString(string input, string before, string after, string suffix)
+        {
+            if (NoConvertSuffix)
+            {
+                if (before.Contains("[Suffix]"))
+                {
+                    input = input.Replace(before, after);
+                }
+                else
+                {
+
+                    if (input.EndsWith(suffix))
+                    {
+                        input = input.Replace(suffix, "");
+                        input = input.Replace(before, after);
+                        input += suffix;
+                    }
+                    else
+                    {
+                        input = input.Replace(before, after);
+                    }
+                }
+            }
+            else
+            {
+                input = input.Replace(before, after);
+            }
+            return input;
+        }
+        #endregion
+
+        #region Others
+        public async Task CopyToClipboard()
+        {
+            try
+            {
+                await MainWindowViewModel.GetClipboard().SetTextAsync("[Suffix]");
+                MainWindowViewModel.ShowSnackbar("クリップボードにコピーしました");
+            }
+            catch (Exception e)
+            {
+                DebugMode.AddError(e);
+                await MainWindowViewModel.MessageDialogOpen(e.Message);
+                return;
+            }
+        }
+
+        public void AddRow()
+        {
+            ReplaceItems.Add(new ReplaceItem());
+        }
+
+        public void DeleteRow(ReplaceItem item)
+        {
+            ReplaceItems.Remove(item);
+        }
+        #endregion
     }
 
     public class ReplaceItem
