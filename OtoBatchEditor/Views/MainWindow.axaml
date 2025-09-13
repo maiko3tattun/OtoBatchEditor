@@ -10,7 +10,7 @@
         xmlns:styles="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
         xmlns:dialogHost="clr-namespace:DialogHostAvalonia;assembly=DialogHost.Avalonia"
         xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-        Icon="/Assets/avalonia-logo.ico"
+        Icon="/Assets/icon_128.ico"
         Title="oto.iniまとめて改造ましーん"
         WindowStartupLocation="CenterScreen"
         Closing="WhenClosing" KeyDown="MainWindowsKeyDown">
