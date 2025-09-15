@@ -61,10 +61,6 @@ namespace OtoBatchEditor.ViewModels
             try
             {
                 var defPrePath = Path.Combine(Path.GetDirectoryName(Environment.ProcessPath)!, "Presets");
-                if (!Directory.Exists(defPrePath))
-                {
-                    Directory.CreateDirectory(defPrePath);
-                }
                 var list = Directory.GetFiles(defPrePath, $"*.yaml");
                 if (!Directory.Exists(Preset.DirectoryPath))
                 {
@@ -73,10 +69,7 @@ namespace OtoBatchEditor.ViewModels
                 foreach (var file in list)
                 {
                     var path = Path.Combine(Preset.DirectoryPath, Path.GetFileName(file));
-                    if (!File.Exists(path))
-                    {
-                        File.Copy(file, path);
-                    }
+                    File.Copy(file, path);
                 }
             }
             catch (Exception ex)
@@ -84,6 +77,7 @@ namespace OtoBatchEditor.ViewModels
                 DebugMode.AddError(ex);
             }
 
+            // ダークモード対応
             var resources = Application.Current?.Resources;
             var theme = Application.Current?.ActualThemeVariant;
             if (theme == Avalonia.Styling.ThemeVariant.Dark)

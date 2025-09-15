@@ -27,6 +27,7 @@ foreach ($macRid in @("osx-x64", "osx-arm64")) {
 
     Copy-Item "$SourceDir\*" "$AppBundleDir\MacOS" -Recurse -Force
     Copy-Item "$AppName\Info.plist" $AppBundleDir -Force
+    Copy-Item "$AppName\Assets\MaikoTools.icns" "$AppBundleDir\Resources" -Force
 
     Write-Host ".app bundle created: $AppBundleDir"
 }
