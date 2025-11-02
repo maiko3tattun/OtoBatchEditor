@@ -1,4 +1,5 @@
 # oto.iniまとめて改造ましーん／OtoBatchEditor
+<img width="900" height="730" alt="スクリーンショット 2025-11-03 002656" src="https://github.com/user-attachments/assets/6ee07117-2eab-4466-8a9d-d0d868e2bcc5" />
 
 ## これはなに？
 複数のoto.iniをまとめて編集するソフトです。
