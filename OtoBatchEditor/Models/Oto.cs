@@ -127,6 +127,7 @@ namespace OtoBatchEditor
                 Alias = this.Alias,
                 Offset = this.Offset,
                 Consonant = this.Consonant,
+                Blank = this.Blank,
                 Pre = this.Pre,
                 Ovl = this.Ovl,
                 Status = this.Status

@@ -228,7 +228,7 @@ namespace OtoBatchEditor.ViewModels
                                     var newoto = oto.Clone();
                                     newoto.Alias = $"- {oto.Alias}";
                                     newOtos.Add(newoto);
-                                    removeList.Add(oto.Alias);
+                                    removeList.Add(newoto.Alias);
                                 }
                             }
                         }
@@ -250,7 +250,7 @@ namespace OtoBatchEditor.ViewModels
                                         var newoto = oto.Clone();
                                         newoto.Alias = alias;
                                         newOtos.Add(newoto);
-                                        removeList.Add(oto.Alias);
+                                        removeList.Add(newoto.Alias);
                                     }
                                 }
                             }
