@@ -19,7 +19,7 @@
 
     <ScrollViewer>
       <StackPanel Classes="content">
-        <TextBlock Margin="10">
+        <TextBlock Margin="{Binding DefaultMargine}">
           <Run Text="エイリアス名が完全一致したものを検索・削除します。" /><LineBreak/>
           <Run Text="なるべく拗音を使用せず、純粋な母音の行から抜き出すようになっています。" /><LineBreak/>
           <LineBreak/>

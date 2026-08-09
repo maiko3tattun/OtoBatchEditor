@@ -29,7 +29,7 @@
 
     <ScrollViewer>
       <StackPanel Classes="content">
-        <CheckBox Content="すべてチェック" IsChecked="{Binding CheckAll}" Classes="Header accent" Margin="15" />
+        <CheckBox Content="すべてチェック" IsChecked="{Binding CheckAll}" Classes="Header accent" Margin="{Binding DefaultMargine}" />
         
         <styles:Card Margin="20,0,20,15">
           <StackPanel Margin="5" Classes="grid">

@@ -15,10 +15,10 @@
 
     <ScrollViewer>
       <StackPanel Classes="content">
-        <TextBlock Text="oto.iniとwavのエラーチェックを行います。" Margin="10"/>
+        <TextBlock Text="oto.iniとwavのエラーチェックを行います。" Margin="{Binding DefaultMargine}"/>
 
-        <TextBlock Text="主なエラー：" Margin="10"/>
-        <StackPanel Margin="20,0">
+        <TextBlock Text="主なエラー：" Margin="{Binding DefaultMargine}"/>
+        <StackPanel Margin="25,0">
           <TextBlock Text="・ファイルの読み書きができない"/>
           <TextBlock Text="・oto.iniの記述が不正"/>
           <TextBlock Text="・パラメータの数値が不正、wavの長さを上回っている、伸縮範囲がない"/>

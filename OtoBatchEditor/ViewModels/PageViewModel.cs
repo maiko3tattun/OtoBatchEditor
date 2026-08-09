@@ -1,4 +1,5 @@
-﻿using OtoBatchEditor.Views;
+﻿using Avalonia;
+using OtoBatchEditor.Views;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,6 +8,8 @@ namespace OtoBatchEditor.ViewModels
 {
     public class PageViewModel : ViewModelBase
     {
+        public Thickness DefaultMargine { get; } = new Thickness(15);
+
         public List<OtoIni> Completed = new List<OtoIni>();
         public List<OtoIni> NotChanged = new List<OtoIni>();
 

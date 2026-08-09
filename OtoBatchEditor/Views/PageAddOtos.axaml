@@ -20,7 +20,7 @@
 
     <ScrollViewer>
       <StackPanel Classes="content">
-        <StackPanel Orientation="Horizontal" Margin="15">
+        <StackPanel Orientation="Horizontal" Margin="{Binding DefaultMargine}">
           <CheckBox Content="語尾 ※" IsChecked="{Binding AddEnding}" HorizontalAlignment="Left" />
           <TextBlock Text="　　a " VerticalAlignment="Center"/>
           <TextBox Text="{Binding EndingAlias}" Width="50" TextAlignment="Left"/>
@@ -31,14 +31,14 @@
           <Run Text=".wav」のように、ファイル名の後ろに音階や表情が書かれていると正しく動作しません。" />
         </TextBlock>
 
-        <CheckBox Content="母音結合（* あ）" IsChecked="{Binding AddVowel}" HorizontalAlignment="Left" Margin="15" />
+        <CheckBox Content="母音結合（* あ）" IsChecked="{Binding AddVowel}" HorizontalAlignment="Left" Margin="{Binding DefaultMargine}" />
 
-        <CheckBox Content="単独音を複製して[- ○]を作る" IsChecked="{Binding AddRentan}" HorizontalAlignment="Left" Margin="15"/>
+        <CheckBox Content="単独音を複製して[- ○]を作る" IsChecked="{Binding AddRentan}" HorizontalAlignment="Left" Margin="{Binding DefaultMargine}"/>
         <TextBlock TextWrapping="Wrap" Margin="30,0,30,15">
           <Run Text="※半角スペースの入っていないエイリアスを単独音判定します" />
         </TextBlock>
 
-        <CheckBox Content="複製する（部分一致）" IsChecked="{Binding AddDupli}" Margin="15" />
+        <CheckBox Content="複製する（部分一致）" IsChecked="{Binding AddDupli}" Margin="{Binding DefaultMargine}" />
         <styles:Card Margin="20,0,20,15">
           <StackPanel Margin="5" Classes="grid">
             <Grid ColumnDefinitions="30,*,*,40,35" Margin="0,0,0,10">

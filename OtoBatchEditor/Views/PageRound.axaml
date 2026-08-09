@@ -19,7 +19,7 @@
 
     <ScrollViewer>
       <StackPanel Classes="content">
-        <StackPanel Margin="15" VerticalAlignment="Center">
+        <StackPanel Margin="{Binding DefaultMargine}" VerticalAlignment="Center">
           <CheckBox Content="左ブランク" IsChecked="{Binding Offset}"/>
           <CheckBox Content="先行発声" IsChecked="{Binding Pre}"/>
           <CheckBox Content="オーバーラップ" IsChecked="{Binding Ovl}"/>

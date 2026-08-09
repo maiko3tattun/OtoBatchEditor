@@ -63,7 +63,7 @@
           </StackPanel>
         </Grid>
 
-        <Expander assists:ShadowAssist.ShadowDepth="CenterDepth1" Margin="0,10">
+        <Expander assists:ShadowAssist.ShadowDepth="CenterDepth1" Margin="5,10">
           <Expander.Header>
             <CheckBox Content="拗音・ハ行 (優先度：激低)" IsChecked="{Binding Check4}" Classes="Header accent" Margin="0"/>
           </Expander.Header>
@@ -76,7 +76,7 @@
           </ItemsControl>
         </Expander>
 
-        <Expander assists:ShadowAssist.ShadowDepth="CenterDepth1" Margin="0,10">
+        <Expander assists:ShadowAssist.ShadowDepth="CenterDepth1" Margin="5,10">
           <Expander.Header>
             <CheckBox Content="カスタム" IsChecked="{Binding Check5}" Classes="Header accent" Margin="0"/>
           </Expander.Header>

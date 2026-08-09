@@ -20,7 +20,7 @@
 
     <ScrollViewer>
       <StackPanel Classes="content">
-        <TextBlock Margin="15" TextWrapping="Wrap" >
+        <TextBlock Margin="{Binding DefaultMargine}" TextWrapping="Wrap" >
           <Run Text="oto.iniから、エイリアスの文字が部分一致した行を削除します。" /><LineBreak />
           <Run Text="[APPEND]でSuffixを指定できます。" /><LineBreak />
           <LineBreak />

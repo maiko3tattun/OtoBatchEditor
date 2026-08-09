@@ -16,7 +16,7 @@
     <ScrollViewer>
       <StackPanel Classes="content">
 
-        <TextBlock Margin="15" TextWrapping="Wrap" >
+        <TextBlock Margin="{Binding DefaultMargine}" TextWrapping="Wrap" >
           <Run Text="wavファイル名と、それに紐づく周波数表等のファイル名を一括変更します。" /><LineBreak/>
           <LineBreak/>
           <Run Text="ああいあうえあ.wav　が" /><LineBreak/>

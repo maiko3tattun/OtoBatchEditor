@@ -17,7 +17,7 @@
     <ScrollViewer>
       <StackPanel Classes="content">
 
-        <TextBlock Margin="15" TextWrapping="Wrap" >
+        <TextBlock Margin="{Binding DefaultMargine}" TextWrapping="Wrap" >
           <Run Text="wavファイル名の見えない文字化け（NFD）を直します。" /><LineBreak/>
           <Run Text="oto.iniに記載のファイル名と実際のファイル名が違う場合、両方をNFCに統一します。" /><LineBreak/>
           <LineBreak/>
@@ -25,7 +25,7 @@
           <Run Text="直せない文字化け：縺ゅ＞縺・∴縺・" />
         </TextBlock>
         
-        <CheckBox Content="oto.iniにないwavもすべて処理する" IsChecked="{Binding MoveAll}" Margin="15"/>
+        <CheckBox Content="oto.iniにないwavもすべて処理する" IsChecked="{Binding MoveAll}" Margin="{Binding DefaultMargine}"/>
 
         <TextBlock Classes="Note"/>
 

@@ -20,7 +20,7 @@
 
     <ScrollViewer>
       <StackPanel Classes="content">
-        <TextBlock Margin="15" TextWrapping="Wrap" >
+        <TextBlock Margin="{Binding DefaultMargine}" TextWrapping="Wrap" >
           <Run Text="・上から順に、部分一致で変換します" /><LineBreak />
           <Run Text="・[Suffix] でエイリアス中のSuffixを指定できます。多くの行の末尾に共通してついているものを自動的にSuffixと認識します" /><LineBreak />
           <Run Text="　例）あ強C4、い強C4・・・の場合、[Suffix]=強C4" /><LineBreak />
@@ -31,7 +31,7 @@
           <Run Text="※後ろに表情や音階などを付ける場合は、「エイリアス末尾に音階名などを追加」を使用してください" />
         </TextBlock>
 
-        <DockPanel Margin="15">
+        <DockPanel Margin="{Binding DefaultMargine}">
           <StackPanel>
             <CheckBox Content="Beforeに正規表現を使用する" IsChecked="{Binding IsRegex}" HorizontalAlignment="Left"/>
             <CheckBox Content="Suffixは変換しない" IsChecked="{Binding NoConvertSuffix}" HorizontalAlignment="Left"/>

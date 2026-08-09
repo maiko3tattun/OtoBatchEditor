@@ -15,7 +15,7 @@
 
     <ScrollViewer>
       <StackPanel Classes="content">
-        <TextBlock Text="原音設定中にうっかりエイリアスの前後に入れてしまいやすいスペース（半角・全角）を削除します。" Margin="15"/>
+        <TextBlock Text="原音設定中にうっかりエイリアスの前後に入れてしまいやすいスペース（半角・全角）を削除します。" Margin="{Binding DefaultMargine}"/>
 
         <TextBlock Classes="Note"/>
 
