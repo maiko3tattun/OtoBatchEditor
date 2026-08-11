@@ -32,7 +32,7 @@ jobs:
           [xml]$csprojXml = Get-Content $CsprojPath
           $versionRaw = $csprojXml.Project.PropertyGroup.Version
           if ([string]::IsNullOrWhiteSpace($versionRaw)) { $versionRaw = "2.0.0" }
-          $versionTag = "v" + ($versionRaw -replace '\.', '')
+          $versionTag = "v" + ($versionRaw -replace '\.', ''-replace '-', '')
           Write-Host "Detected Version: $versionRaw -> Tag: $versionTag"
 
           foreach ($rid in $RIDs) {
@@ -79,7 +79,7 @@ jobs:
           [xml]$csprojXml = Get-Content $CsprojPath
           $versionRaw = $csprojXml.Project.PropertyGroup.Version
           if ([string]::IsNullOrWhiteSpace($versionRaw)) { $versionRaw = "2.0.0" }
-          $versionTag = "v" + ($versionRaw -replace '\.', '')
+          $versionTag = "v" + ($versionRaw -replace '\.', ''-replace '-', '')
           Write-Host "Detected Version: $versionRaw -> Tag: $versionTag"
 
           # 個別アーキテクチャのビルド
