@@ -152,15 +152,15 @@ jobs:
         run: |
           VERSION=$(grep -oPm1 "(?<=<Version>)[^<]+" OtoBatchEditor/OtoBatchEditor.csproj)
           echo "Detected Version: $VERSION"
-
-          # プレリリースの判定 (ハイフンやアルファベットが含まれている場合はプレリリースにする)
+          
+          # プレリリースの判定
           if [[ "$VERSION" =~ [-] ]] || [[ "$VERSION" =~ [a-zA-Z] ]]; then
             echo "Pre-release version detected."
             echo "prerelease=true" >> $GITHUB_OUTPUT
           else
             echo "Stable version detected."
             echo "prerelease=false" >> $GITHUB_OUTPUT
-          }
+          fi
 
           TAG="v$VERSION"
           echo "Generated Tag: $TAG"
@@ -183,6 +183,6 @@ jobs:
           name: Release ${{ steps.create_release.outputs.tag }}
           files: dist/*.zip
           generate_release_notes: true
-          prerelease: ${{ steps.create_release.outputs.prerelease }} # 💡 自動判定した結果を適用
+          prerelease: ${{ steps.create_release.outputs.prerelease }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
