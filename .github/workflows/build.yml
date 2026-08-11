@@ -43,9 +43,11 @@ jobs:
               $zipFileName = "$AppName-$versionTag-$rid.zip"
               $zipPath = "$PublishDir\$zipFileName"
               if (Test-Path $zipPath) { Remove-Item $zipPath -Force }
+              
+              pushd $outputDir
+              & "C:\Program Files\7-Zip\7z.exe" a -tzip "$zipPath" "*"
+              popd
 
-              # Compress-Archive -Path "$outputDir\*" -DestinationPath $zipPath -Force
-              & "C:\Program Files\7-Zip\7z.exe" a -tzip "$zipPath" "$outputDir\*"
               Write-Host "Zip created: $zipPath"
           }
 
