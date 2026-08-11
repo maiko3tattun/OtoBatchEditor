@@ -47,6 +47,7 @@
               <views:PagePreutter/>
               <views:PageAddOtos/>
               <views:PageAddVC/>
+              <views:PageAddCV/>
               <views:PageAddPreC/>
               <views:PageRemoveOtos/>
               <views:PageDuplicate/>

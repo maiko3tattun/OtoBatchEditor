@@ -30,6 +30,7 @@ namespace OtoBatchEditor.ViewModels
             "数値：先行発声とオーバーラップを調整",
             "追加：語尾・母音結合・を等を追加",
             "追加：連続音にVCを追加",
+            "追加：連続音にCV（単独音）を追加",
             "追加：先頭子音 - C を追加",
             "削除：不要な行を検索して削除",
             "削除：重複エイリアスの確認と削除",
@@ -82,7 +83,7 @@ namespace OtoBatchEditor.ViewModels
             var theme = Application.Current?.ActualThemeVariant;
             if (theme == Avalonia.Styling.ThemeVariant.Dark)
             {
-                resources["CardBackGroundBrush"] = new SolidColorBrush(Color.Parse("#008ba3"));
+                resources!["CardBackGroundBrush"] = new SolidColorBrush(Color.Parse("#008ba3"));
             }
         }
 

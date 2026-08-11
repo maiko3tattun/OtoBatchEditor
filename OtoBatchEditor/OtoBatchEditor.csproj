@@ -49,6 +49,9 @@
     <Compile Update="Views\PageAddOtos.axaml.cs">
       <DependentUpon>PageAddOtos.axaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\PageAddCV.axaml.cs">
+      <DependentUpon>PageAddCV.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\PageAddPreC.axaml.cs">
       <DependentUpon>PageAddPreC.axaml</DependentUpon>
     </Compile>

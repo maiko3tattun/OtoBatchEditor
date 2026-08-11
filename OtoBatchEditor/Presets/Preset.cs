@@ -115,6 +115,8 @@ namespace OtoBatchEditor
                     return new AddOtosPreset((viewModel as AddOtosViewModel)!, name);
                 case PresetTypes.AddVC:
                     return new AddVCPreset((viewModel as AddVCViewModel)!, name);
+                case PresetTypes.AddCV:
+                    return new AddCVPreset((viewModel as AddCVViewModel)!, name);
                 case PresetTypes.AddPreC:
                     return new AddPreCPreset((viewModel as AddPreCViewModel)!, name);
                 case PresetTypes.RemoveOtos:
@@ -152,6 +154,7 @@ namespace OtoBatchEditor
         Preutter,
         AddOtos,
         AddVC,
+        AddCV,
         AddPreC,
         RemoveOtos,
         Duplicate,

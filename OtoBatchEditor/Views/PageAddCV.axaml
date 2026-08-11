@@ -1,0 +1,43 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:OtoBatchEditor"
+             xmlns:vm="using:OtoBatchEditor.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="490" d:DesignHeight="690"
+             x:Class="OtoBatchEditor.Views.PageAddCV"
+             x:DataType="vm:AddCVViewModel"
+             xmlns:styles="clr-namespace:Material.Styles.Controls;assembly=Material.Styles"
+             xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia">
+  <DockPanel>
+    <styles:ColorZone Classes="header">
+      <DockPanel Margin="0,0,60,0">
+        <TextBlock Text="連続音にCV（単独音）を追加" Classes="header"/>
+        <local:PresetTip Name="preset"/>
+      </DockPanel>
+    </styles:ColorZone>
+
+    <ScrollViewer>
+      <StackPanel Classes="content">
+        <TextBlock Margin="{Binding DefaultMargine}">
+          <Run Text="連続音の音源にCV（単独音）を追加します。" /><LineBreak/>
+          <LineBreak/>
+          <Run Text="「単独音っぽいパラメータを適用」または「先頭以外から切り出す」を選択すると、先行発声やオーバーラップなどは事前に用意された固定値になります。" />
+        </TextBlock>
+        
+        <ListBox Margin="{Binding DefaultMargine}" SelectedIndex="{Binding ModeIndex}" Classes="RadioButtonListBox">
+          <ListBoxItem Content="先頭以外から切り出す" />
+          <ListBoxItem Content="[- あ]を複製して[あ]にする（パラメータはそのまま）" />
+          <ListBoxItem Content="[- あ]を複製して[あ]にする（単独音っぽいパラメータを適用）" />
+        </ListBox>
+        
+        <CheckBox Content="数字付きエイリアスは複製しない" IsChecked="{Binding AltVersion}" Margin="{Binding DefaultMargine}"/>
+
+        <TextBlock Classes="Note"/>
+        <CheckBox Classes="Overwrite accent" IsChecked="{Binding OverWrite}" />
+
+        <Button Command="{Binding OK}" Classes="Ok"/>
+      </StackPanel>
+    </ScrollViewer>
+  </DockPanel>
+</UserControl>
