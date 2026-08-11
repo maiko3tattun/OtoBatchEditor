@@ -55,7 +55,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: windows-builds
-          path: OtoBatchEditor/bin/Release/*.zip
+          path: |
+            OtoBatchEditor/bin/Release/*.zip
+            OtoBatchEditor\bin\Release\*.zip
 
   # ==========================================
   # 2. macOS ユニバーサルビルド (x64 + ARM64)
@@ -112,13 +114,15 @@ jobs:
           $IcnsPath = "$AppName/Assets/MaikoTools.icns"
           if (Test-Path $IcnsPath) { Copy-Item $IcnsPath "$AppBundleDir/Resources" -Force }
 
-          # Universal 版の Zip アーカイブを作成
+          # Universal 版の Zip アーカイブを作成 (zip コマンドを使用)
           $zipFileName = "$AppName-$versionTag-osx-universal.zip"
           $zipPath = "$PublishDir/$zipFileName"
           if (Test-Path $zipPath) { Remove-Item $zipPath -Force }
+          
+          pushd "$PublishDir/osx-universal"
+          zip -r -9 "../$zipFileName" "$AppName.app"
+          popd
 
-          $targetPath = "$PublishDir/osx-universal/$AppName.app"
-          Compress-Archive -Path $targetPath -DestinationPath $zipPath -Force
           Write-Host "Universal Zip created: $zipPath"
 
       - name: Upload macOS Artifact
