@@ -62,15 +62,19 @@ namespace OtoBatchEditor.ViewModels
             try
             {
                 var defPrePath = Path.Combine(Path.GetDirectoryName(Environment.ProcessPath)!, "Presets");
-                var list = Directory.GetFiles(defPrePath, $"*.yaml");
+                var list = Directory.GetFiles(defPrePath, "*.yaml");
                 if (!Directory.Exists(Preset.DirectoryPath))
                 {
                     Directory.CreateDirectory(Preset.DirectoryPath);
                 }
+
                 foreach (var file in list)
                 {
                     var path = Path.Combine(Preset.DirectoryPath, Path.GetFileName(file));
-                    File.Copy(file, path);
+                    if (!File.Exists(path) || File.GetLastWriteTimeUtc(file) > File.GetLastWriteTimeUtc(path))
+                    {
+                        File.Copy(file, path, overwrite: true);
+                    }
                 }
             }
             catch (Exception ex)
