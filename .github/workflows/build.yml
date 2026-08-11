@@ -1,35 +1,116 @@
-name: Build macOS Universal Binary
+name: Build and Package
 
 on:
   push:
     branches: [ master ]
+  workflow_dispatch:
 
 jobs:
-  build-universal:
-    runs-on: macos-latest
-
+  # ==========================================
+  # 1. Windows ビルド (x64 / ARM64)
+  # ==========================================
+  build-windows:
+    runs-on: windows-latest
     steps:
-      # 1. リポジトリのコードをチェックアウト
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. ビルドの実行（例：Xcodeプロジェクトの場合）
-      - name: Build for Universal (Intel & Apple Silicon)
-        run: |
-          xcodebuild -project YourApp.xcodeproj \
-                     -scheme YourApp \
-                     -configuration Release \
-                     ARCHS="x86_64 arm64" \
-                     ONLY_ACTIVE_ARCH=NO \
-                     build
-          
-          # ※ CMakeを使うプロジェクトの場合はこちらのような形になります
-          # cmake -B build -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"
-          # cmake --build build --config Release
+      - name: Setup .NET 8.0
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
 
-      # 3. 完成したビルド成果物をダウンロードできるように保存
-      - name: Upload Artifact
+      - name: Build and Archive Windows
+        shell: pwsh
+        run: |
+          $AppName = "OtoBatchEditor"
+          $PublishDir = "OtoBatchEditor\bin\Release"
+          $RIDs = @("win-x64", "win-arm64")
+
+          # .csproj からバージョン情報を取得
+          $CsprojPath = "$AppName\$AppName.csproj"
+          [xml]$csprojXml = Get-Content $CsprojPath
+          $versionRaw = $csprojXml.Project.PropertyGroup.Version
+          if ([string]::IsNullOrWhiteSpace($versionRaw)) { $versionRaw = "2.0.0" }
+          $versionTag = "v" + ($versionRaw -replace '\.', '')
+          Write-Host "Detected Version: $versionRaw -> Tag: $versionTag"
+
+          foreach ($rid in $RIDs) {
+              Write-Host "Publishing $rid..."
+              $outputDir = "$PublishDir\$rid"
+              dotnet publish "$CsprojPath" -c Release -r $rid --self-contained true -p:PublishSingleFile=true -p:DebugType=None -o $outputDir
+
+              $zipFileName = "$AppName-$versionTag-$rid.zip"
+              $zipPath = "$PublishDir\$zipFileName"
+              if (Test-Path $zipPath) { Remove-Item $zipPath -Force }
+
+              Compress-Archive -Path "$outputDir\*" -DestinationPath $zipPath -Force
+              Write-Host "Zip created: $zipPath"
+          }
+
+      - name: Upload Windows Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: universal-app
-          path: build/Release/YourApp  # 実際のバイナリや.appの出力パスに合わせて変更してください
+          name: windows-builds
+          path: OtoBatchEditor/bin/Release/*.zip
+
+  # ==========================================
+  # 2. macOS ユニバーサルビルド (x64 + ARM64)
+  # ==========================================
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8.0
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Build and Universal Bundle macOS
+        shell: pwsh
+        run: |
+          $AppName = "OtoBatchEditor"
+          $PublishDir = "OtoBatchEditor/bin/Release"
+
+          # 個別アーキテクチャのビルド
+          foreach ($macRid in @("osx-x64", "osx-arm64")) {
+              Write-Host "Publishing $macRid..."
+              $outputDir = "$PublishDir/$macRid"
+              dotnet publish "$CsprojPath" -c Release -r $macRid --self-contained true -p:PublishSingleFile=true -p:DebugType=None -o $outputDir
+          }
+
+          # .app バンドルの作成と Universal 化 (lipo)
+          Write-Host "Creating macOS Universal .app bundle..."
+          $AppBundleDir = "$PublishDir/osx-universal/$AppName.app/Contents"
+          New-Item -ItemType Directory -Force -Path "$AppBundleDir/MacOS" | Out-Null
+          New-Item -ItemType Directory -Force -Path "$AppBundleDir/Resources" | Out-Null
+
+          # アセットやマネージドファイルをコピー (arm64版をベース)
+          Copy-Item "$PublishDir/osx-arm64/*" "$AppBundleDir/MacOS" -Recurse -Force
+
+          # lipoコマンドで実行ファイルを統合
+          lipo -create -output "$AppBundleDir/MacOS/$AppName" `
+               "$PublishDir/osx-x64/$AppName" `
+               "$PublishDir/osx-arm64/$AppName"
+
+          # Info.plist と アイコンの配置
+          if (Test-Path $InfoPlistPath) { Copy-Item $InfoPlistPath $AppBundleDir -Force }
+          $IcnsPath = "$AppName/Assets/MaikoTools.icns"
+          if (Test-Path $IcnsPath) { Copy-Item $IcnsPath "$AppBundleDir/Resources" -Force }
+
+          # Universal 版の Zip アーカイブを作成
+          $zipFileName = "$AppName-$versionTag-osx-universal.zip"
+          $zipPath = "$PublishDir/$zipFileName"
+          if (Test-Path $zipPath) { Remove-Item $zipPath -Force }
+
+          $targetPath = "$PublishDir/osx-universal/$AppName.app"
+          Compress-Archive -Path $targetPath -DestinationPath $zipPath -Force
+          Write-Host "Universal Zip created: $zipPath"
+
+      - name: Upload macOS Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-universal-build
+          path: OtoBatchEditor/bin/Release/*-osx-universal.zip
