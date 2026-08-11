@@ -1,0 +1,35 @@
+name: Build macOS Universal Binary
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-universal:
+    runs-on: macos-latest
+
+    steps:
+      # 1. リポジトリのコードをチェックアウト
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. ビルドの実行（例：Xcodeプロジェクトの場合）
+      - name: Build for Universal (Intel & Apple Silicon)
+        run: |
+          xcodebuild -project YourApp.xcodeproj \
+                     -scheme YourApp \
+                     -configuration Release \
+                     ARCHS="x86_64 arm64" \
+                     ONLY_ACTIVE_ARCH=NO \
+                     build
+          
+          # ※ CMakeを使うプロジェクトの場合はこちらのような形になります
+          # cmake -B build -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"
+          # cmake --build build --config Release
+
+      # 3. 完成したビルド成果物をダウンロードできるように保存
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: universal-app
+          path: build/Release/YourApp  # 実際のバイナリや.appの出力パスに合わせて変更してください
