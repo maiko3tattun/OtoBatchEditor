@@ -55,9 +55,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: windows-builds
-          path: |
-            OtoBatchEditor/bin/Release/*.zip
-            OtoBatchEditor\bin\Release\*.zip
+          path: OtoBatchEditor\bin\Release\*.zip
 
   # ==========================================
   # 2. macOS ユニバーサルビルド (x64 + ARM64)
@@ -119,9 +117,7 @@ jobs:
           $zipPath = "$PublishDir/$zipFileName"
           if (Test-Path $zipPath) { Remove-Item $zipPath -Force }
           
-          pushd "$PublishDir/osx-universal"
-          zip -r -9 "../$zipFileName" "$AppName.app"
-          popd
+          ditto -c -k --sequesterRsrc --keepParent "$PublishDir/osx-universal/$AppName.app" "$zipPath"
 
           Write-Host "Universal Zip created: $zipPath"
 
