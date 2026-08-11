@@ -180,7 +180,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.create_release.outputs.tag }}
-          name: Release ${{ steps.create_release.outputs.tag }}
+          name: ${{ steps.create_release.outputs.tag }}
           files: dist/*.zip
           generate_release_notes: true
           prerelease: ${{ steps.create_release.outputs.prerelease }}
