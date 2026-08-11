@@ -1,4 +1,4 @@
-﻿using Avalonia.Controls.Selection;
+using Avalonia.Controls.Selection;
 using DynamicData;
 using DynamicData.Binding;
 using ReactiveUI.Fody.Helpers;

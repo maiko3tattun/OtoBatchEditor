@@ -1,4 +1,4 @@
-﻿using DynamicData.Aggregation;
+using DynamicData.Aggregation;
 using DynamicData.Binding;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;

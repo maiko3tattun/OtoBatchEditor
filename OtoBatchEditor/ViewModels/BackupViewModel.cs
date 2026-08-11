@@ -1,4 +1,4 @@
-﻿using ReactiveUI.Fody.Helpers;
+using ReactiveUI.Fody.Helpers;
 using System;
 
 namespace OtoBatchEditor.ViewModels

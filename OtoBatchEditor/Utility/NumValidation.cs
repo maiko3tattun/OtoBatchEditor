@@ -1,4 +1,4 @@
-﻿namespace OtoBatchEditor
+namespace OtoBatchEditor
 {
     public static class NumValidation
     {

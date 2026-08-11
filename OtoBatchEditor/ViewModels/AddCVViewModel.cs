@@ -1,4 +1,4 @@
-﻿using OtoBatchEditor.Models;
+using OtoBatchEditor.Models;
 using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.Generic;

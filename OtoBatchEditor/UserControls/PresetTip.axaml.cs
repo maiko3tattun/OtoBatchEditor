@@ -23,7 +23,7 @@ public partial class PresetTip : UserControl
     private static DropDownButton? menuButton;
     public static void MenuClose()
     {
-        menuButton?.Flyout?.Hide(); // Todo ‚È‚ñ‚Å“®‚©‚È‚¢HH
+        menuButton?.Flyout?.Hide(); // Todo ãªã‚“ã§å‹•ã‹ãªã„ï¼Ÿï¼Ÿ
     }
 }
 
@@ -45,10 +45,10 @@ public class PresetTipViewModel : ViewModelBase
         PresetList = new ObservableCollection<object>(presets);
 
         PresetList.Add(new Separator());
-        PresetList.Add(new PresetItemViewModel("•Û‘¶", ReactiveCommand.Create(async () =>
+        PresetList.Add(new PresetItemViewModel("ä¿å­˜", ReactiveCommand.Create(async () =>
         {
             PresetTip.MenuClose();
-            var content = new InputDialog("–¼‘OF", "ƒLƒƒƒ“ƒZƒ‹");
+            var content = new InputDialog("åå‰ï¼š", "ã‚­ãƒ£ãƒ³ã‚»ãƒ«");
             await MainWindowViewModel.DialogOpen(content);
             if (content.Execute)
             {
@@ -56,13 +56,13 @@ public class PresetTipViewModel : ViewModelBase
                 {
                     if (string.IsNullOrWhiteSpace(content.Text) || content.Text == "Default" || content.Text == "Latest")
                     {
-                        MainWindowViewModel.ShowSnackbar("g—p‚Å‚«‚È‚¢ƒvƒŠƒZƒbƒg–¼‚Å‚·");
+                        MainWindowViewModel.ShowSnackbar("ä½¿ç”¨ã§ããªã„ãƒ—ãƒªã‚»ãƒƒãƒˆåã§ã™");
                         return;
                     }
-                    var text = "ƒvƒŠƒZƒbƒg‚ğ•Û‘¶‚µ‚Ü‚µ‚½";
+                    var text = "ãƒ—ãƒªã‚»ãƒƒãƒˆã‚’ä¿å­˜ã—ã¾ã—ãŸ";
                     if (PresetList.Any(preset => preset is PresetItemViewModel vm && content.Text == vm.PresetName))
                     {
-                        text = "ƒvƒŠƒZƒbƒg‚ğã‘‚«•Û‘¶‚µ‚Ü‚µ‚½";
+                        text = "ãƒ—ãƒªã‚»ãƒƒãƒˆã‚’ä¸Šæ›¸ãä¿å­˜ã—ã¾ã—ãŸ";
                     }
                     var preset = Preset.GetPreset(PresetType, pageViewModel, content.Text);
                     preset.Save();
@@ -72,11 +72,11 @@ public class PresetTipViewModel : ViewModelBase
                 catch (Exception e)
                 {
                     DebugMode.AddError(e);
-                    MainWindowViewModel.ShowSnackbar("ƒvƒŠƒZƒbƒg‚Ì•Û‘¶‚É¸”s‚µ‚Ü‚µ‚½");
+                    MainWindowViewModel.ShowSnackbar("ãƒ—ãƒªã‚»ãƒƒãƒˆã®ä¿å­˜ã«å¤±æ•—ã—ã¾ã—ãŸ");
                 }
             }
         })));
-        PresetList.Add(new PresetItemViewModel("ƒtƒHƒ‹ƒ_‚ğŠJ‚­", ReactiveCommand.Create(() =>
+        PresetList.Add(new PresetItemViewModel("ãƒ•ã‚©ãƒ«ãƒ€ã‚’é–‹ã", ReactiveCommand.Create(() =>
         {
             try
             {
@@ -100,7 +100,7 @@ public class PresetTipViewModel : ViewModelBase
             catch (Exception e)
             {
                 DebugMode.AddError(e);
-                MainWindowViewModel.ShowSnackbar("ƒtƒHƒ‹ƒ_‚ğŠJ‚¯‚Ü‚¹‚ñ‚Å‚µ‚½");
+                MainWindowViewModel.ShowSnackbar("ãƒ•ã‚©ãƒ«ãƒ€ã‚’é–‹ã‘ã¾ã›ã‚“ã§ã—ãŸ");
             }
             PresetTip.MenuClose();
             return Task.CompletedTask;
@@ -125,12 +125,12 @@ public class PresetItemViewModel : ViewModelBase
             try
             {
                 preset.Load();
-                MainWindowViewModel.ShowSnackbar("ƒvƒŠƒZƒbƒg‚ğ“Ç‚İ‚İ‚Ü‚µ‚½");
+                MainWindowViewModel.ShowSnackbar("ãƒ—ãƒªã‚»ãƒƒãƒˆã‚’èª­ã¿è¾¼ã¿ã¾ã—ãŸ");
             }
             catch (Exception e)
             {
                 DebugMode.AddError(e);
-                MainWindowViewModel.ShowSnackbar("ƒvƒŠƒZƒbƒg‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚Ü‚µ‚½");
+                MainWindowViewModel.ShowSnackbar("ãƒ—ãƒªã‚»ãƒƒãƒˆã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ");
             }
             PresetTip.MenuClose();
         });

@@ -29,7 +29,7 @@ namespace OtoBatchEditor.Views
             {
                 DebugMode.AddError(ex);
 #if DEBUG
-                MainWindowViewModel.ShowSnackbar("‘O‰ñ’l‚Ì•Û‘¶‚É¸”s‚µ‚Ü‚µ‚½");
+                MainWindowViewModel.ShowSnackbar("å‰å›å€¤ã®ä¿å­˜ã«å¤±æ•—ã—ã¾ã—ãŸ");
                 e.Cancel = true;
 #endif
             }
@@ -42,17 +42,17 @@ namespace OtoBatchEditor.Views
                 DebugMode.ToggleLogExport();
                 if (DebugMode.DebugModeIsEnable)
                 {
-                    MainWindowViewModel.ShowSnackbar("ÀsŒãA•s‹ï‡•ñ—p‚ÌƒƒOƒtƒ@ƒCƒ‹‚ğo—Í‚µ‚Ü‚·");
+                    MainWindowViewModel.ShowSnackbar("å®Ÿè¡Œå¾Œã€ä¸å…·åˆå ±å‘Šç”¨ã®ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‡ºåŠ›ã—ã¾ã™");
                 }
                 else
                 {
-                    MainWindowViewModel.ShowSnackbar("ƒƒOƒtƒ@ƒCƒ‹o—Í‚ğƒIƒt‚É‚µ‚Ü‚µ‚½");
+                    MainWindowViewModel.ShowSnackbar("ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›ã‚’ã‚ªãƒ•ã«ã—ã¾ã—ãŸ");
                 }
                 e.Handled = true;
             }
             else if (e.KeyModifiers == (KeyModifiers.Control | KeyModifiers.Shift) && e.Key == Key.D)
             {
-                var result = await MainWindowViewModel.MessageDialogOpen("•s‹ï‡•ñ—p‚ÌƒƒOƒtƒ@ƒCƒ‹‚ğo—Í‚µ‚Ü‚·B\n‚±‚Ìƒ‚[ƒh‚ÍƒGƒ‰[‚ª‹N‚«‚½‚ ‚Æ‚É‹N“®‚µ‚Ä‚­‚¾‚³‚¢B", "ƒLƒƒƒ“ƒZƒ‹");
+                var result = await MainWindowViewModel.MessageDialogOpen("ä¸å…·åˆå ±å‘Šç”¨ã®ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‡ºåŠ›ã—ã¾ã™ã€‚\nã“ã®ãƒ¢ãƒ¼ãƒ‰ã¯ã‚¨ãƒ©ãƒ¼ãŒèµ·ããŸã‚ã¨ã«èµ·å‹•ã—ã¦ãã ã•ã„ã€‚", "ã‚­ãƒ£ãƒ³ã‚»ãƒ«");
                 if (result)
                 {
                     await DebugMode.Export(LogOutputType.Manual);

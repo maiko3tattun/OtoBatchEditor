@@ -9,6 +9,7 @@
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
     <ApplicationIcon>Assets\icon_256.ico</ApplicationIcon>
     <UseAppHost>true</UseAppHost>
+    <CodePage>65001</CodePage> <!-- コンパイラに対してソースコードは UTF-8 だと強制する -->
   </PropertyGroup>
 
   <ItemGroup>

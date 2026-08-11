@@ -1,4 +1,4 @@
-﻿using DynamicData.Binding;
+using DynamicData.Binding;
 using System;
 using System.Collections.Generic;
 using System.IO;

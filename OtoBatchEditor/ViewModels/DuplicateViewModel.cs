@@ -1,4 +1,4 @@
-﻿using OtoBatchEditor.Views;
+using OtoBatchEditor.Views;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;

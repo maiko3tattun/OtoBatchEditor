@@ -34,7 +34,7 @@ public partial class PageUst : UserControl
         var first = drop?.Select(f => f.Path.LocalPath).First();
         if (first == null)
         {
-            await MainWindowViewModel.MessageDialogOpen("ドロップの中身がありません");
+            await MainWindowViewModel.MessageDialogOpen("繝峨Ο繝�繝励�ｮ荳ｭ霄ｫ縺後≠繧翫∪縺帙ｓ");
             return;
         }
 
@@ -44,7 +44,7 @@ public partial class PageUst : UserControl
         }
         if (!Directory.Exists(first))
         {
-            await MainWindowViewModel.MessageDialogOpen("フォルダがありません");
+            await MainWindowViewModel.MessageDialogOpen("繝輔か繝ｫ繝縺後≠繧翫∪縺帙ｓ");
             return;
         }
         viewModel.SetDirectory(first);

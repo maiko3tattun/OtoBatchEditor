@@ -1,4 +1,4 @@
-﻿using DynamicData.Binding;
+using DynamicData.Binding;
 using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.Generic;

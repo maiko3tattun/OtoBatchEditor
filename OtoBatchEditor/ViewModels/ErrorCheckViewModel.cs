@@ -1,4 +1,4 @@
-﻿using NAudio.Wave;
+using NAudio.Wave;
 using OtoBatchEditor.Views;
 using System;
 using System.Collections.Generic;

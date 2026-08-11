@@ -1,4 +1,4 @@
-﻿using Avalonia;
+using Avalonia;
 using OtoBatchEditor.Views;
 using System;
 using System.Collections.Generic;

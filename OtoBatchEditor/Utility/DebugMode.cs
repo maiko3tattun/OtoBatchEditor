@@ -1,4 +1,4 @@
-﻿using OtoBatchEditor.ViewModels;
+using OtoBatchEditor.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

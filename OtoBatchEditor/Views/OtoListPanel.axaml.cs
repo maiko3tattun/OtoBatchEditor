@@ -20,7 +20,7 @@ public partial class OtoListPanel : UserControl
         var drop = e.Data.GetFiles();
         if (drop == null)
         {
-            await MainWindowViewModel.MessageDialogOpen("ドロップの中身がありません");
+            await MainWindowViewModel.MessageDialogOpen("繝峨Ο繝�繝励�ｮ荳ｭ霄ｫ縺後≠繧翫∪縺帙ｓ");
             return;
         }
         vm.OnDropInis(drop.Select(f => f.Path.LocalPath).ToArray());

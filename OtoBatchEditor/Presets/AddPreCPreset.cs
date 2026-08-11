@@ -1,4 +1,4 @@
-﻿using DynamicData.Binding;
+using DynamicData.Binding;
 using OtoBatchEditor.ViewModels;
 using System.IO;
 using System.Text;

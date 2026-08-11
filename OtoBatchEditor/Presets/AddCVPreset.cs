@@ -1,4 +1,4 @@
-﻿using OtoBatchEditor.ViewModels;
+using OtoBatchEditor.ViewModels;
 using System.IO;
 using System.Text;
 using YamlDotNet.Serialization;
