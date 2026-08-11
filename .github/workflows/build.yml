@@ -74,6 +74,14 @@ jobs:
           $AppName = "OtoBatchEditor"
           $PublishDir = "OtoBatchEditor/bin/Release"
 
+          # .csproj からバージョン情報を取得
+          $CsprojPath = "$AppName/$AppName.csproj"
+          [xml]$csprojXml = Get-Content $CsprojPath
+          $versionRaw = $csprojXml.Project.PropertyGroup.Version
+          if ([string]::IsNullOrWhiteSpace($versionRaw)) { $versionRaw = "2.0.0" }
+          $versionTag = "v" + ($versionRaw -replace '\.', '')
+          Write-Host "Detected Version: $versionRaw -> Tag: $versionTag"
+
           # 個別アーキテクチャのビルド
           foreach ($macRid in @("osx-x64", "osx-arm64")) {
               Write-Host "Publishing $macRid..."
@@ -96,6 +104,7 @@ jobs:
                "$PublishDir/osx-arm64/$AppName"
 
           # Info.plist と アイコンの配置
+          $InfoPlistPath = "$AppName/Info.plist"
           if (Test-Path $InfoPlistPath) { Copy-Item $InfoPlistPath $AppBundleDir -Force }
           $IcnsPath = "$AppName/Assets/MaikoTools.icns"
           if (Test-Path $IcnsPath) { Copy-Item $IcnsPath "$AppBundleDir/Resources" -Force }
