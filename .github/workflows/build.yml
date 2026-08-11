@@ -2,7 +2,7 @@ name: Build macOS Universal Binary
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   build-universal:
