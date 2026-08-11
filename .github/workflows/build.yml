@@ -1,8 +1,6 @@
-name: Build and Package
+name: Build and Release
 
 on:
-  push:
-    branches: [ master ]
   workflow_dispatch:
 
 jobs:
@@ -123,3 +121,68 @@ jobs:
         with:
           name: macos-universal-build
           path: OtoBatchEditor/bin/Release/*-osx-universal.zip
+
+  # ==========================================
+  # 3. GitHub Releases への自動公開
+  # ==========================================
+  release:
+    needs: [build-windows, build-macos]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download Windows Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-builds
+          path: dist
+
+      - name: Download macOS Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: macos-universal-build
+          path: dist
+
+      - name: Create Git Tag and Release
+        id: create_release
+        shell: bash
+        run: |
+          VERSION=$(grep -oPm1 "(?<=<Version>)[^<]+" OtoBatchEditor/OtoBatchEditor.csproj)
+          echo "Detected Version: $VERSION"
+
+          # プレリリースの判定 (ハイフンやアルファベットが含まれている場合はプレリリースにする)
+          if [[ "$VERSION" =~ [-] ]] || [[ "$VERSION" =~ [a-zA-Z] ]]; then
+            echo "Pre-release version detected."
+            echo "prerelease=true" >> $GITHUB_OUTPUT
+          else
+            echo "Stable version detected."
+            echo "prerelease=false" >> $GITHUB_OUTPUT
+          }
+
+          TAG="v$VERSION"
+          echo "Generated Tag: $TAG"
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          if git rev-parse "$TAG" >/dev/null 2>&1; then
+            echo "Tag $TAG already exists."
+          else
+            git tag "$TAG"
+            git push origin "$TAG"
+          fi
+
+      - name: Upload to GitHub Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.create_release.outputs.tag }}
+          name: Release ${{ steps.create_release.outputs.tag }}
+          files: dist/*.zip
+          generate_release_notes: true
+          prerelease: ${{ steps.create_release.outputs.prerelease }} # 💡 自動判定した結果を適用
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
