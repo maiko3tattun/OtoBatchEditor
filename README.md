@@ -13,7 +13,7 @@
 
 ## ダウンロード
 https://github.com/maiko3tattun/OtoBatchEditor/releases  
-Assetsを開き、Windowsならだいたい`win-x64`、Windows Armなら`win-arm64`、Mac Apple Siliconなら`osx-arm64`、Mac Intelなら`osx-x64`をダウンロードしてください。v2.09以降はmaxOS版は`osx-universal`のみになります。
+Assetsを開き、Windowsならだいたい`win-x64`、Windows Armなら`win-arm64`、Mac Apple Siliconなら`osx-arm64`、Mac Intelなら`osx-x64`をダウンロードしてください。v2.0.9以降はmaxOS版は`osx-universal`のみになります。
 
 ## 起動方法
 - Windows: zipファイルを展開し、「OtoBatchEditor.exe」を開くとスタンドアロンで起動します。
@@ -51,16 +51,16 @@ HP: https://maiko3tattun.wixsite.com/mysite
 mail: maikotattun@yahoo.co.jp  
 
 ## 更新履歴（ver2.0以降）
-2026/08/11 v2.09-beta1
+2026/08/11 v2.0.9-beta1
 - 「連続音にCVを追加」を追加
 - macOS版をユニバーサルビルドにした（IntelでもApple Siliconでも共通のアプリケーションになります）
 - 内部的な変更：GitHub Actionで配布パッケージを作成できるようにした
 
-2026/08/11 v2.01
+2026/08/11 v2.0.1
 - 「語尾・母音結合・を等を追加」で複製元のエイリアスが削除されるバグと追加したエイリアスの右ブランクが0になるバグを修正
 - レイアウトを微調整
 
-2025/11/02 v2.00
+2025/11/02 v2.0.0
 - Windows版にアイコンを追加
 - エイリアス変換で大文字・小文字化に対応、プリセット更新
 
