@@ -85,6 +85,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="plugin.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Presets\ReplaceAlias_%27あ→あ・.yaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

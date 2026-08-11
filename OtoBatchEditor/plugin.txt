@@ -1,0 +1,4 @@
+name=otoini‚Ü‚Æ‚ß‚Ä‰ü‘¢‚Ü‚µ[‚ñ
+execute=OtoBatchEditor.exe
+argv=%R
+edit=all
